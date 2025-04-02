@@ -123,10 +123,9 @@ function getEvPos(ev) {
 
   return {
     x: (clientX - rect.left) * scaleX,
-    y: (clientY - rect.top) * scaleY
+    y: (clientY - rect.top) * scaleY,
   }
 }
-
 
 function onDown(ev) {
   const pos = getEvPos(ev)
@@ -198,8 +197,19 @@ function getLineClickedIdx(pos) {
   return -1
 }
 
-
-function onSetFont(font){
+function onSetFont(font) {
   gMeme.lines[gMeme.selectedLineIdx].font = font
+  renderMeme()
+}
+
+function onMoveText(direction) {
+  const line = gMeme.lines[gMeme.selectedLineIdx]
+
+  if (direction === "left") line.pos.x -= 10
+  else if (direction === "right") line.pos.x += 10
+  else if (direction === "center") {
+    const canvas = document.getElementById("meme-canvas")
+    line.pos.x = canvas.width / 2
+  }
   renderMeme()
 }

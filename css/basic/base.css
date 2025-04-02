@@ -38,3 +38,8 @@ canvas {
   display: flex;
   gap: 10px;
 }
+
+.fotter {
+  display: flex;
+  flex-direction: row;
+}

@@ -60,28 +60,32 @@
           </select>
 
           <ul class="direction-edit">
-            <li><a class="fa-solid fa-left-long"></a></li>
-            <li><a class="fa-solid fa-right-long"></a</li>
-            <li><a class="fa-solid fa-arrows-to-circle"></a></li>
+            <li><a onclick="onMoveText('left')" class="fa-solid fa-left-long"></a></li>
+            <li><a onclick="onMoveText('right')" class="fa-solid fa-right-long"></a></li>
+            <li><a onclick="onMoveText('center')" class="fa-solid fa-arrows-to-circle"></a></li>
           </ul>
 
           <div>
             <button onclick="onChangeFontSize(2)">A+</button>
             <button onclick="onChangeFontSize(-2)">A-</button>
           </div>
-          <!-- Download -->
-          <a href="#" onclick="onDownloadCanvas(this)" download><i class="fa-solid fa-download"></i>Download</a>
-          <div class="share-container"></div>
-          <!-- UPLOAD TO Cloudinary -->
-          <form
-            action=""
-            method="POST"
-            enctype="multipart/form-data"
-            onsubmit="onUploadImg(event)"
-          >
-            <input name="img" id="imgData" type="hidden" />
-            <button class="btn" type="submit"><i class="fa-solid fa-share-from-square"></i>Upload</button>
-          </form>
+
+          <section class="fotter">
+            <!-- Download -->
+            <a href="#" onclick="onDownloadCanvas(this)" download><i class="fa-solid fa-download"></i>Download</a>
+            <div class="share-container"></div>
+            <!-- UPLOAD TO Cloudinary -->
+            <form
+              action=""
+              method="POST"
+              enctype="multipart/form-data"
+              onsubmit="onUploadImg(event)"
+            >
+              <input name="img" id="imgData" type="hidden" />
+              <button class="btn" type="submit"><i class="fa-solid fa-share-from-square"></i>Upload</button>
+            </form>
+
+          </section>
         </div>
 
       </div>
