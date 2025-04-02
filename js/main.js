@@ -1,10 +1,6 @@
-'use strict'
+"use strict"
 
-
-function onInit(){
-
-}
-
-function renderMems(){
-    
+function onInit() {
+    renderGallery()
+    renderMeme()
 }

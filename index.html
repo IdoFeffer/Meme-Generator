@@ -9,11 +9,19 @@
 <body onload="onInit()">
     <h1>Meme Generator - sprint 2</h1>
     
-
     <section class="gallery-layout"></section>
     <section class="editor-mems hidden"></section>
 
-    <script src="js/main.js"></script>
+    <!-- CANVAS  -->
+    <canvas id="meme-canvas" width="450" height="450"></canvas>
+
+    <!-- INPUT TEXT  -->
+    <input type="text" placeholder="Enter text..." oninput="onSetLineTxt(this.value)">
+
+    <script src="js/services/meme-service.js"></script>
     <script src="js/services/util-service.js"></script>
+    <script src="js/galleryController.js"></script>
+    <script src="js/memeController.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
