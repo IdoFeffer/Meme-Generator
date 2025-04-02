@@ -17,7 +17,8 @@ function renderGallery() {
 function onImgSelect(imgId) {
   setImg(imgId)
   renderMeme()
-
+  
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.remove("hidden")
+  
 }
