@@ -1,16 +1,15 @@
 /* BASIC  */
-@import url('basic/base.css');
-@import url('basic/layout.css');
+@import url("basic/base.css");
+@import url("basic/layout.css");
 
 /* COMPONENTS  */
-@import url('components/buttons.css');
-@import url('components/editor.css');
+@import url("components/buttons.css");
+@import url("components/editor.css");
 
 /* MEDIA QUERIES */
-@import url('setup/mq.css');
+@import url("setup/mq.css");
 
-
- /* * {
+/* * {
   box-sizing: border-box;
 }
 

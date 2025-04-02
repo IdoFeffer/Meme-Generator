@@ -3,7 +3,7 @@
 function renderGallery() {
   const imgs = getImgs()
   const elGallery = document.querySelector(".gallery-layout")
-
+    
   const strHTMLs = imgs.map((img) => {
     return `
         <img src="${img.url}"
