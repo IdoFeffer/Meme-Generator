@@ -1,18 +1,24 @@
-"use strict"
 
+"use strict"
 let gLastPos
 var gIsMouseDown = false
 var gElCanvas = document.getElementById("meme-canvas")
 
 function onInit() {
-  gElCanvas = document.querySelector("canvas")
+  gElCanvas = document.getElementById("meme-canvas")
   gCtx = gElCanvas.getContext("2d")
 
-
   renderGallery()
-  renderMeme()
+  gElCanvas.addEventListener("click", onCanvasClick)
 
-  
+  gElCanvas.addEventListener("mousedown", onDown)
+  gElCanvas.addEventListener("mousemove", onMove)
+  gElCanvas.addEventListener("mouseup", onUp)
+
+  gElCanvas.addEventListener("touchstart", onDown, { passive: false })
+  gElCanvas.addEventListener("touchmove", onMove, { passive: false })
+  gElCanvas.addEventListener("touchend", onUp, { passive: false })
+  renderMeme()
 }
 
 // download canvas
@@ -36,6 +42,7 @@ function onBackToGallery() {
   document.querySelector(".gallery-layout").classList.remove("hidden")
 }
 
+// Canvas clicks 
 function onCanvasClick(ev) {
   const canvas = document.getElementById("meme-canvas")
   const ctx = canvas.getContext("2d")
@@ -43,23 +50,20 @@ function onCanvasClick(ev) {
   const x = ev.offsetX
   const y = ev.offsetY
   const meme = getMeme()
+  const prevColor = meme.lines[meme.selectedLineIdx].color
 
   meme.lines.forEach((line, idx) => {
-    let lineY
-    if (idx === 0) lineY = 50
-    else if (idx === 1) lineY = canvas.height - 50
-    else lineY = canvas.height / 2
-
+    ctx.font = `${line.size}px Impact`
     const textWidth = ctx.measureText(line.txt).width
     const textHeight = line.size + 10
 
-    const xStart = canvas.width / 2 - textWidth / 2
-    const xEnd = canvas.width / 2 + textWidth / 2
-    const yStart = lineY - textHeight
-    const yEnd = lineY
+    const xStart = line.pos.x - textWidth / 2
+    const xEnd = line.pos.x + textWidth / 2
+    const yStart = line.pos.y - textHeight + 10
+    const yEnd = line.pos.y
 
     if (x >= xStart && y <= xEnd && y >= yStart && y <= yEnd) {
-      gMeme.selectedLineIdx = idx
+      meme.selectedLineIdx = idx
       renderMeme()
 
       document.getElementById("line-text").value = line.txt
@@ -78,67 +82,63 @@ function resizeCanvas() {
     gElCanvas.height = gElCanvas.width
   }
 }
-////////////////////////////////////
+
+// MOVE TEXT
 function getEvPos(ev) {
   const TOUCH_EVS = ["touchstart", "touchmove", "touchend"]
+  const rect = gElCanvas.getBoundingClientRect()
   let pos
 
   if (TOUCH_EVS.includes(ev.type)) {
     ev.preventDefault()
     ev = ev.changedTouches[0]
     pos = {
-      x: ev.pageX - ev.target.offsetLeft,
-      y: ev.pageY - ev.target.offsetTop,
+      x: ev.clientX - rect.left,
+      y: ev.clientY - rect.top,
     }
   } else {
     pos = {
-      x: ev.offsetX,
-      y: ev.offsetY,
+      x: ev.clientX - rect.left,
+      y: ev.clientY - rect.top,
     }
   }
   return pos
 }
 
 function onDown(ev) {
-  if (ev.type === 'mousedown') ev.preventDefault()
-
   const pos = getEvPos(ev)
+  if (ev.type === "mousedown") ev.preventDefault()
+
   const lineIdx = getLineClickedIdx(pos)
   if (lineIdx === -1) return
-
-  console.log('drag started for line', lineIdx)
 
   gMeme.selectedLineIdx = lineIdx
   gMeme.lines[lineIdx].isDrag = true
   gLastPos = pos
-  document.body.style.cursor = 'grabbing'
+  document.body.style.cursor = "grabbing"
 }
 
 function onMove(ev) {
-  
   const line = gMeme.lines[gMeme.selectedLineIdx]
   if (!line.isDrag) return
-  
+
   const pos = getEvPos(ev)
   const dx = pos.x - gLastPos.x
   const dy = pos.y - gLastPos.y
-  
-  console.log('before:', line.pos)
+
   line.pos.x += dx
   line.pos.y += dy
-
-  console.log('Δx:', dx, 'Δy:', dy)
   gLastPos = pos
+  getEvPos(ev)
   renderMeme()
 }
 
 function onUp() {
-  // if (ev.type === 'mousedown') ev.preventDefault()
   gIsMouseDown = false
 
   const line = gMeme.lines[gMeme.selectedLineIdx]
   if (line) line.isDrag = false
-  document.body.style.cursor = 'grab'
+  document.body.style.cursor = "grab"
 }
 
 function getLineClickedIdx(pos) {
@@ -151,16 +151,23 @@ function getLineClickedIdx(pos) {
     if (!line.pos || !line.txt) continue
 
     ctx.font = `${line.size}px Impact`
+    ctx.textAlign = "center"
+    ctx.textBaseline = "middle"
+
     const textWidth = ctx.measureText(line.txt).width
     const textHeight = line.size + 10
 
     const xStart = line.pos.x - textWidth / 2
     const xEnd = line.pos.x + textWidth / 2
-    const yStart = line.pos.y - textHeight + 10
-    const yEnd = line.pos.y
+    const yStart = line.pos.y - textHeight / 2
+    const yEnd = line.pos.y + textHeight / 2
 
-    if (pos.x >= xStart && pos.x <= xEnd
-      && pos.y >= yStart && pos.y <= yEnd) {
+    console.log(`🔍 Checking Line ${i}`)
+    console.log(`Bounds: x ${xStart}–${xEnd}, y ${yStart}–${yEnd}`)
+    console.log(`Click at: x=${pos.x}, y=${pos.y}`)
+
+    if (pos.x >= xStart && pos.x <= xEnd && pos.y >= yStart && pos.y <= yEnd) {
+      console.log(`✅ Line ${i} was clicked!`)
       return i
     }
   }

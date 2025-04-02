@@ -1,0 +1,40 @@
+@media (max-width: 640px) {
+    .editor-layout {
+      flex-direction: column;
+      align-items: center;
+      padding-inline: 1em;
+    }
+  
+    .edit-controls {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+  
+    .canvas-container {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .gallery-layout {
+      padding-inline: 1em;
+      gap: 12px;
+    }
+  
+    .gallery-layout img {
+      max-width: 90px;
+    }
+  
+    canvas {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .editor-layout {
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }

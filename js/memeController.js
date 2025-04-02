@@ -14,15 +14,14 @@ function renderMeme() {
 
     gCtx.drawImage(img, 0, 0, canvas.width, canvas.height)
 
-    // const line = meme.lines[meme.selectedLineIdx]
     meme.lines.forEach((line, idx) => {
+      
       gCtx.font = `${line.size}px Impact`
-      gCtx.fillStyle = line.color
       gCtx.textAlign = "center"
-      gCtx.fillText(line.txt, line.pos.x, line.pos.y)
+      gCtx.textBaseline = "middle"
 
-      // const x = line.pos.x
-      // const y = line.pos.y
+      gCtx.fillStyle = line.color
+      gCtx.fillText(line.txt, line.pos.x, line.pos.y)
     
       if (idx === meme.selectedLineIdx) {
         const textMetrics = gCtx.measureText(line.txt)
@@ -58,11 +57,14 @@ function onAddLine() {
 
 // SWITCH LINES
 function onSwitchLine() {
+  const meme = getMeme()
+  const prevColor = meme.lines[meme.selectedLineIdx].color
+  
   switchLine()
 
-  const meme = getMeme()
-  const line = meme.lines[meme.selectedLineIdx]
-  document.getElementById("line-text").value = line.txt
+  const newLine = meme.lines[meme.selectedLineIdx]
+  newLine.color = prevColor
 
+  document.getElementById("line-text").value = newLine.txt
   renderMeme()
 }
