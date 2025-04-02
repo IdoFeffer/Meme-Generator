@@ -14,6 +14,7 @@ function renderMeme() {
 
     const line = meme.lines[meme.selectedLineIdx]
     ctx.font = `${line.size}px Impact`
+    console.log(line.color)
     ctx.fillStyle = line.color
     ctx.textAlign = "center"
     ctx.fillText(line.txt, canvas.width / 2, 50)
@@ -25,4 +26,10 @@ function renderMeme() {
 function onSetLineTxt(txt) {
     setLineTxt(txt)
     renderMeme()
+}
+
+// FONT SIZE 
+function onChangeFontSize(diff){
+  changeFontSize(diff)
+  renderMeme()
 }

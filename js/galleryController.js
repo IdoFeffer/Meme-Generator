@@ -18,7 +18,10 @@ var gImgs = [
   { id: 2, url: "img/meme-imgs(square)/2.jpg", keywords: ["funny", "dog"] },
 ]
 
-function onImgSelect(imgId){
-    setImg (imgId)
-    renderMeme()
+function onImgSelect(imgId) {
+  setImg(imgId)
+  renderMeme()
+
+  document.querySelector(".gallery-layout").classList.add("hidden")
+  document.querySelector(".editor-mems").classList.remove("hidden")
 }
