@@ -4,12 +4,9 @@ var gMeme = {
   selectedImgId: 1,
   selectedLineIdx: 0,
   lines: [
-    {
-      txt: "Your text here",
-      size: 20,
-      color: "blue",
-    },
-  ],
+    { txt: "Top text", size: 30, color: "white" },
+    { txt: "Bottom text", size: 30, color: "yellow" }
+  ]
 }
 
 // var gImgs = [
@@ -30,18 +27,32 @@ function getImgById(id){
     return img.url
 }
 
+// TEXT EDIT 
 function setLineTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
+// SELECT IMG FROM GALLERY
 function setImg(imgId) {
   gMeme.selectedImgId = imgId
 }
 
+// TEXT LINE COLOR 
 function setLineColor(color) {
   gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
+// FONT SIZE 
 function changeFontSize(diff) {
   gMeme.lines[gMeme.selectedLineIdx].size += diff
+}
+
+function addLine(){
+  const newLine = {
+    txt: 'New line',
+    size: 20,
+    color: 'white'
+  }
+  gMeme.lines.push(newLine)
+  gMeme.selectedLineIdx = gMeme.lines.length - 1
 }

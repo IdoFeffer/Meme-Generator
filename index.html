@@ -9,36 +9,41 @@
   <body onload="onInit()">
     <h1>Meme Generator - sprint 2</h1>
     <button onclick="onBackToGallery()">Gallery</button>
+    <button onclick="onAddLine()">Add line</button>
 
+    <!-- GALLERY -->
     <section class="gallery-layout"></section>
-    <section class="editor-mems hidden"></section>
 
-    <!-- CANVAS  -->
-    <div class="canvas-container">
-      <canvas id="meme-canvas" width="450" height="450"></canvas>
-    </div>
+    <!-- EDIT MEMS -->
+    <section class="editor-mems hidden">
+      <!-- CANVAS -->
+      <div class="canvas-container">
+        <canvas id="meme-canvas" width="450" height="450"></canvas>
+      </div>
 
-    <!-- download  -->
-    <a href="#" onclick="onDownloadCanvas(this)" download>Download</a>
+      <!-- INPUT TEXT -->
+      <input
+        type="text"
+        placeholder="Enter text..."
+        oninput="onSetLineTxt(this.value)"
+      />
 
-    <!-- INPUT TEXT  -->
-    <input
-      type="text"
-      placeholder="Enter text..."
-      oninput="onSetLineTxt(this.value)"
-    />
 
-    <!-- COLOR PICKER  -->
-    <input
-    type="color"
-    id="colorPicker"
-    class="color-picker"
-    onchange="onSetColor(event)"
-  />
+      <!-- COLOR PICKER -->
+      <input
+        type="color"
+        id="colorPicker"
+        class="color-picker"
+        onchange="onSetColor(event)"
+      />
 
-  <!-- FONT SIZE  -->
-  <button onclick="onChangeFontSize(2)">A+</button>
-  <button onclick="onChangeFontSize(-2)">A-</button>
+      <!-- FONT SIZE -->
+      <button onclick="onChangeFontSize(2)">A+</button>
+      <button onclick="onChangeFontSize(-2)">A-</button>
+
+      <!-- DOWNLOAD -->
+      <a href="#" onclick="onDownloadCanvas(this)" download>Download</a>
+    </section>
 
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/util-service.js"></script>
