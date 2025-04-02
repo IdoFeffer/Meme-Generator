@@ -68,3 +68,15 @@ function onSwitchLine() {
   document.getElementById("line-text").value = newLine.txt
   renderMeme()
 }
+
+// REMOVE 
+function onRemoveLine(){
+  gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+
+  if (gMeme.lines.length === 0){
+    gMeme.selectedLineIdx = -1
+  } else {
+    gMeme.selectedLineIdx = 0
+  }
+  renderMeme()
+}

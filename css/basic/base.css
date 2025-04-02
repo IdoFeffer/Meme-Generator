@@ -35,4 +35,6 @@ canvas {
 
 .direction-edit {
   list-style-type: none;
+  display: flex;
+  gap: 10px;
 }
