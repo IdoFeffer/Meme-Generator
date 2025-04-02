@@ -3,6 +3,7 @@ let gLastPos
 var gIsMouseDown = false
 var gElCanvas = document.getElementById("meme-canvas")
 
+
 function onInit() {
   gElCanvas = document.getElementById("meme-canvas")
   gCtx = gElCanvas.getContext("2d")
@@ -82,27 +83,7 @@ function resizeCanvas() {
   }
 }
 
-// MOVE TEXT
-// function getEvPos(ev) {
-//   const TOUCH_EVS = ["touchstart", "touchmove", "touchend"]
-//   const rect = gElCanvas.getBoundingClientRect()
-//   let pos
-
-//   if (TOUCH_EVS.includes(ev.type)) {
-//     ev.preventDefault()
-//     ev = ev.changedTouches[0]
-//     pos = {
-//       x: ev.clientX - rect.left,
-//       y: ev.clientY - rect.top,
-//     }
-//   } else {
-//     pos = {
-//       x: ev.clientX - rect.left,
-//       y: ev.clientY - rect.top,
-//     }
-//   }
-//   return pos
-// }
+// Move text with mouse/touche
 
 function getEvPos(ev) {
   const rect = gElCanvas.getBoundingClientRect()
@@ -213,3 +194,26 @@ function onMoveText(direction) {
   }
   renderMeme()
 }
+
+function onRandomMeme() {
+  const imgs = getImgs()
+  const randomImg = imgs[Math.floor(Math.random() * imgs.length)]
+  gMeme.selectedLineIdx = randomImg.id
+
+  gMeme.lines = [
+    {
+      txt: "Surprise!",
+      size: 30,
+      color: "blue",
+      font: "Impact",
+      pos: { x: 250, y: 50 },
+      isDrag: false,
+    },
+  ]
+  gMeme.selectedLineIdx = 0
+
+  document.querySelector(".gallery-layout").classList.add("hidden")
+  document.querySelector(".editor-mems").classList.remove("hidden")
+  renderMeme()
+}
+

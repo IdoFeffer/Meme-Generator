@@ -15,6 +15,8 @@
     <h1>Meme Generator - sprint 2</h1>
 
     <button onclick="onBackToGallery()">Gallery</button>
+    <button onclick="onRandomMeme()">Surprise me!</button>
+
 
     <!-- GALLERY -->
     <section class="gallery-layout"></section>
@@ -73,6 +75,7 @@
           <section class="fotter">
             <!-- Download -->
             <a href="#" onclick="onDownloadCanvas(this)" download><i class="fa-solid fa-download"></i>Download</a>
+            <button class="save-meme" onclick="onSaveMeme()">Save meme</button>
             <div class="share-container"></div>
             <!-- UPLOAD TO Cloudinary -->
             <form
@@ -91,6 +94,7 @@
       </div>
     </section>
 
+    <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/upload-service.js"></script>
     <script src="js/services/util-service.js"></script>

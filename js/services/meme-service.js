@@ -1,5 +1,8 @@
 "use strict"
 
+const STORAGE_KEY = "savedMemes"
+
+
 var gMeme = {
   selectedImgId: 1,
   selectedLineIdx: 0,
@@ -42,6 +45,10 @@ var gImgs = [
   { id: 18, url: "img/meme-imgs(square)/18.jpg", keywords: ["toy", "buzz"] }
 ]
 
+const userService = {
+  save,
+  get,
+}
 
 function getMeme() {
   return gMeme
@@ -94,4 +101,21 @@ function switchLine() {
 
   var nextIdx = (currIdx + 1) % gMeme.lines.length
   gMeme.selectedLineIdx = nextIdx
+}
+
+function onSaveMeme(){
+  const savedMems = loadFromStorage(STORAGE_KEY) || []
+  const memeCopy = JSON.parse(JSON.stringify(gMeme))
+  savedMems.push(memeCopy)
+  saveToStorage(STORAGE_KEY, savedMems)
+  console.log('💾 Meme saved:', savedMems)
+}
+
+function save(userPrefs) {
+  saveToStorage(STORAGE_KEY, userPrefs)
+}
+
+function get() {
+  const data = localStorage.getItem(STORAGE_KEY)
+  return data ? JSON.parse(data) : null
 }
