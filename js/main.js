@@ -1,4 +1,3 @@
-
 "use strict"
 let gLastPos
 var gIsMouseDown = false
@@ -42,7 +41,7 @@ function onBackToGallery() {
   document.querySelector(".gallery-layout").classList.remove("hidden")
 }
 
-// Canvas clicks 
+// Canvas clicks
 function onCanvasClick(ev) {
   const canvas = document.getElementById("meme-canvas")
   const ctx = canvas.getContext("2d")
@@ -84,29 +83,57 @@ function resizeCanvas() {
 }
 
 // MOVE TEXT
-function getEvPos(ev) {
-  const TOUCH_EVS = ["touchstart", "touchmove", "touchend"]
-  const rect = gElCanvas.getBoundingClientRect()
-  let pos
+// function getEvPos(ev) {
+//   const TOUCH_EVS = ["touchstart", "touchmove", "touchend"]
+//   const rect = gElCanvas.getBoundingClientRect()
+//   let pos
 
-  if (TOUCH_EVS.includes(ev.type)) {
+//   if (TOUCH_EVS.includes(ev.type)) {
+//     ev.preventDefault()
+//     ev = ev.changedTouches[0]
+//     pos = {
+//       x: ev.clientX - rect.left,
+//       y: ev.clientY - rect.top,
+//     }
+//   } else {
+//     pos = {
+//       x: ev.clientX - rect.left,
+//       y: ev.clientY - rect.top,
+//     }
+//   }
+//   return pos
+// }
+
+function getEvPos(ev) {
+  const rect = gElCanvas.getBoundingClientRect()
+
+  let clientX, clientY
+  if (ev.type.startsWith("touch")) {
     ev.preventDefault()
-    ev = ev.changedTouches[0]
-    pos = {
-      x: ev.clientX - rect.left,
-      y: ev.clientY - rect.top,
-    }
+    const touch = ev.changedTouches[0]
+    clientX = touch.clientX
+    clientY = touch.clientY
   } else {
-    pos = {
-      x: ev.clientX - rect.left,
-      y: ev.clientY - rect.top,
-    }
+    clientX = ev.clientX
+    clientY = ev.clientY
   }
-  return pos
+
+  const scaleX = gElCanvas.width / rect.width
+  const scaleY = gElCanvas.height / rect.height
+
+  return {
+    x: (clientX - rect.left) * scaleX,
+    y: (clientY - rect.top) * scaleY
+  }
 }
+
 
 function onDown(ev) {
   const pos = getEvPos(ev)
+  console.log('📱 Touch event?', ev.type)
+  console.log('📐 Canvas rect:', gElCanvas.getBoundingClientRect())
+  console.log('🧮 Clicked pos:', pos)
+
   if (ev.type === "mousedown") ev.preventDefault()
 
   const lineIdx = getLineClickedIdx(pos)
@@ -162,9 +189,9 @@ function getLineClickedIdx(pos) {
     const yStart = line.pos.y - textHeight / 2
     const yEnd = line.pos.y + textHeight / 2
 
-    console.log(`🔍 Checking Line ${i}`)
-    console.log(`Bounds: x ${xStart}–${xEnd}, y ${yStart}–${yEnd}`)
-    console.log(`Click at: x=${pos.x}, y=${pos.y}`)
+    // console.log(`🔍 Checking Line ${i}`)
+    // console.log(`Bounds: x ${xStart}–${xEnd}, y ${yStart}–${yEnd}`)
+    // console.log(`Click at: x=${pos.x}, y=${pos.y}`)
 
     if (pos.x >= xStart && pos.x <= xEnd && pos.y >= yStart && pos.y <= yEnd) {
       console.log(`✅ Line ${i} was clicked!`)
