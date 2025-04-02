@@ -10,6 +10,7 @@
     <h1>Meme Generator - sprint 2</h1>
     <button onclick="onBackToGallery()">Gallery</button>
     <button onclick="onAddLine()">Add line</button>
+    <button onclick="onSwitchLine()">Switch line</button>
 
     <!-- GALLERY -->
     <section class="gallery-layout"></section>
@@ -18,16 +19,16 @@
     <section class="editor-mems hidden">
       <!-- CANVAS -->
       <div class="canvas-container">
-        <canvas id="meme-canvas" width="450" height="450"></canvas>
+        <canvas id="meme-canvas" width="450" height="450" onclick="onCanvasClick(event)"></canvas>
       </div>
 
       <!-- INPUT TEXT -->
       <input
+        id="line-text"
         type="text"
         placeholder="Enter text..."
         oninput="onSetLineTxt(this.value)"
       />
-
 
       <!-- COLOR PICKER -->
       <input

@@ -56,3 +56,10 @@ function addLine(){
   gMeme.lines.push(newLine)
   gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
+
+function switchLine(){
+  var currIdx = gMeme.selectedLineIdx
+
+  var nextIdx = (currIdx + 1) % gMeme.lines.length
+  gMeme.selectedLineIdx = nextIdx
+}
