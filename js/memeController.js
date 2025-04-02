@@ -16,7 +16,7 @@ function renderMeme() {
 
     meme.lines.forEach((line, idx) => {
       
-      gCtx.font = `${line.size}px Impact`
+      gCtx.font = `${line.size}px ${line.font || 'Impact'}`
       gCtx.textAlign = "center"
       gCtx.textBaseline = "middle"
 

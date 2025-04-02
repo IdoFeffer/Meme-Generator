@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sprint 2</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/731169d875.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
+
   <body onload="onInit()" class="main-layout grid">
     <h1>Meme Generator - sprint 2</h1>
 
@@ -40,6 +45,24 @@
             <button onclick="onAddLine()">Add line</button>
             <button onclick="onSwitchLine()">Switch line</button>
           </div>
+
+          <!-- Font  -->
+          <select
+            name=""
+            class="fontSelect"
+            id="font-select"
+            onchange="onSetFont(this.value)"
+          >
+            <option value="Verdana">Verdana</option>
+            <option value="Arial">Arial</option>
+            <option value="Impact">Impact</option>
+          </select>
+
+          <ul class="direction-edit">
+            <li><a class="fa-solid fa-left-long"></a></li>
+            <li><a class="fa-solid fa-right-long"></a</li>
+            <li><a class="fa-solid fa-arrows-to-circle"></a></li>
+          </ul>
 
           <div>
             <button onclick="onChangeFontSize(2)">A+</button>

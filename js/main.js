@@ -130,9 +130,6 @@ function getEvPos(ev) {
 
 function onDown(ev) {
   const pos = getEvPos(ev)
-  console.log('📱 Touch event?', ev.type)
-  console.log('📐 Canvas rect:', gElCanvas.getBoundingClientRect())
-  console.log('🧮 Clicked pos:', pos)
 
   if (ev.type === "mousedown") ev.preventDefault()
 
@@ -199,4 +196,10 @@ function getLineClickedIdx(pos) {
     }
   }
   return -1
+}
+
+
+function onSetFont(font){
+  gMeme.lines[gMeme.selectedLineIdx].font = font
+  renderMeme()
 }
