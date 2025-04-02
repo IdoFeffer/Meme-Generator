@@ -19,7 +19,17 @@
     <section class="editor-mems hidden">
       <!-- CANVAS -->
       <div class="canvas-container">
-        <canvas id="meme-canvas" width="450" height="450" onclick="onCanvasClick(event)"></canvas>
+        <canvas
+          id="meme-canvas"
+          width="400"
+          height="400"
+          onmousedown="onDown(event)"
+          ontouchstart="onDown(event)"
+          onmouseup="onUp()"
+          ontouchend="onUp()"
+          onmousemove="onMove(event)"
+          ontouchmove="onDraw(event)"
+        ></canvas>
       </div>
 
       <!-- INPUT TEXT -->
@@ -48,8 +58,8 @@
 
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/util-service.js"></script>
-    <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
+    <script src="js/galleryController.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

@@ -13,10 +13,6 @@ function renderGallery() {
   elGallery.innerHTML = strHTMLs.join("")
 }
 
-var gImgs = [
-  { id: 1, url: "img/meme-imgs(square)/1.jpg", keywords: ["funny", "idea"] },
-  { id: 2, url: "img/meme-imgs(square)/2.jpg", keywords: ["funny", "dog"] },
-]
 
 function onImgSelect(imgId) {
   setImg(imgId)

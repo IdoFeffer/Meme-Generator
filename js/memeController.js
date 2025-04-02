@@ -1,5 +1,7 @@
 "use strict"
 
+var gCtx
+
 function renderMeme() {
   const meme = getMeme()
 
@@ -8,32 +10,29 @@ function renderMeme() {
 
   img.onload = () => {
     const canvas = document.getElementById("meme-canvas")
-    const ctx = canvas.getContext("2d")
+    const gCtx = canvas.getContext("2d")
 
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+    gCtx.drawImage(img, 0, 0, canvas.width, canvas.height)
 
     // const line = meme.lines[meme.selectedLineIdx]
     meme.lines.forEach((line, idx) => {
-      var y
-      ctx.font = `${line.size}px Impact`
-      ctx.fillStyle = line.color
-      ctx.textAlign = "center"
+      gCtx.font = `${line.size}px Impact`
+      gCtx.fillStyle = line.color
+      gCtx.textAlign = "center"
+      gCtx.fillText(line.txt, line.pos.x, line.pos.y)
 
-      if (idx === 0) y = 50
-      else if (idx === 1) y = canvas.height - 50
-      else y = canvas.height / 2
-      ctx.fillText(line.txt, canvas.width / 2, y)
-
+      // const x = line.pos.x
+      // const y = line.pos.y
+    
       if (idx === meme.selectedLineIdx) {
-        const textMetrics = ctx.measureText(line.txt)
-
+        const textMetrics = gCtx.measureText(line.txt)
         const width = textMetrics.width
         const height = line.size + 10
-        const x = canvas.width / 2 - width / 2
-        const rectY = y - height + 10
+        const x = line.pos.x - width / 2
+        const rectY = line.pos.y - height + 10
 
-        ctx.strokeStyle = "blue"
-        ctx.strokeRect(x, rectY, width, height)
+        gCtx.strokeStyle = "blue"
+        gCtx.strokeRect(x, rectY, width, height)
       }
     })
   }
@@ -63,7 +62,7 @@ function onSwitchLine() {
 
   const meme = getMeme()
   const line = meme.lines[meme.selectedLineIdx]
-  document.getElementById('line-text').value = line.txt
+  document.getElementById("line-text").value = line.txt
 
   renderMeme()
 }
