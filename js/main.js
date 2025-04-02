@@ -2,5 +2,9 @@
 
 
 function onInit(){
+
+}
+
+function renderMems(){
     
 }
