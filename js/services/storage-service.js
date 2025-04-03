@@ -17,9 +17,21 @@ function onSaveMeme() {
   const savedMems = loadFromStorage(STORAGE_KEY) || []
   const memeCopy = JSON.parse(JSON.stringify(gMeme))
 
+  if (gMeme.selectedImgId === -1 && gMeme.imgUrl) {
+    memeCopy.imgUrl = gMeme.imgUrl
+  }
+
   savedMems.push(memeCopy)
   saveToStorage(STORAGE_KEY, savedMems)
 }
+
+// function onSaveMeme() {
+//   const savedMems = loadFromStorage(STORAGE_KEY) || []
+//   const memeCopy = JSON.parse(JSON.stringify(gMeme))
+
+//   savedMems.push(memeCopy)
+//   saveToStorage(STORAGE_KEY, savedMems)
+// }
 
 function save(userPrefs) {
   saveToStorage(STORAGE_KEY, userPrefs)
@@ -35,15 +47,27 @@ function _saveMemeToStorage() {
 }
 
 function onShowSavedMeme() {
-  gSavedMems = loadFromStorage("savedMems") || []
+  var savedMems = loadFromStorage("savedMems") || []
   const elSaved = document.querySelector(".saved-memes")
 
+  // const strHTMLs = savedMems.map((meme, idx) => {
+  //   const imgUrl = meme.uploadedImgUrl || getImgById(meme.selectedImgId)
+  //   return `
+  //           <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
+  //         `
+  // })
   const strHTMLs = savedMems.map((meme, idx) => {
-    const imgUrl = meme.uploadedImgUrl || getImgById(meme.selectedImgId)
+    console.log('🖼 imgUrl:', imgUrl)
+    const imgUrl = meme.imgUrl || getImgById(meme.selectedImgId)
+    if (!imgUrl) {
+      console.warn(`⚠️ Missing image for meme at index ${idx}`)
+      return ''
+    } 
     return `
-            <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
-          `
+      <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
+    `
   })
+  
   elSaved.innerHTML = strHTMLs.join("")
   elSaved.classList.remove("hidden")
 
@@ -56,7 +80,7 @@ function onLoadSavedMeme(idx) {
   const memeToLoad = savedMems[idx]
   if (!memeToLoad) return console.warn("❌ Meme not found")
 
-  gMeme = JSON.parse(JSON.stringify(memeToLoad)) // טוען עותק
+  gMeme = JSON.parse(JSON.stringify(memeToLoad)) 
   renderMeme()
 
   document.querySelector(".editor-mems").classList.remove("hidden")

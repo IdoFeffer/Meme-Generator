@@ -8,7 +8,7 @@ function onInit() {
   gCtx = gElCanvas.getContext("2d")
 
   renderGallery()
-  onKeywords()
+  // onKeywords()
   gElCanvas.addEventListener("click", onCanvasClick)
 
   gElCanvas.addEventListener("mousedown", onDown)
@@ -138,12 +138,14 @@ function onMove(ev) {
 }
 
 function onUp() {
+  console.log('🖱️ Mouse/Touch up')
   gIsMouseDown = false
 
   const line = gMeme.lines[gMeme.selectedLineIdx]
   if (line) line.isDrag = false
-  document.body.style.cursor = "grab"
+  document.body.style.cursor = "default"
 }
+
 
 function getLineClickedIdx(pos) {
   const canvas = document.getElementById("meme-canvas")
@@ -214,18 +216,18 @@ function onRandomMeme() {
   renderMeme()
 }
 
-function onKeywords() {
-  const elKeywords = document.querySelector(".keywords-container")
-  const strHTMLs = Object.entries(keywords).map(([word, count]) => {
-    return `
-    <span onclick="onKeywordClick('${word}')"
-          style='font-size: ${count + 12}px'>${word}
-    </span>
-    `
-  })
-  elKeywords.innerHTML = strHTMLs.join("")
-  // document.querySelector(".keywords-container").classList.add("block")
-}
+// function onKeywords() {
+//   const elKeywords = document.querySelector(".keywords-container")
+//   const strHTMLs = Object.entries(keywords).map(([word, count]) => {
+//     return `
+//     <span onclick="onKeywordClick('${word}')"
+//           style='font-size: ${count + 12}px'>${word}
+//     </span>
+//     `
+//   })
+//   elKeywords.innerHTML = strHTMLs.join("")
+//   // document.querySelector(".keywords-container").classList.add("block")
+// }
 
 function onKeywordClick(word){
   keywords[word]++

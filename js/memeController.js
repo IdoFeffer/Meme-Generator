@@ -9,8 +9,7 @@ function renderMeme() {
     meme.selectedImgId === -1 ? meme.imgUrl : getImgById(meme.selectedImgId)
   img.onload = () => {
     const canvas = document.getElementById("meme-canvas")
-    const gCtx = canvas.getContext("2d")
-
+    gCtx = canvas.getContext("2d")
     gCtx.drawImage(img, 0, 0, canvas.width, canvas.height)
 
     meme.lines.forEach((line, idx) => {
@@ -49,7 +48,7 @@ function onChangeFontSize(diff) {
 
 // ADD LINE
 function onAddLine() {
-  console.log('📌 Add line clicked')
+  console.log("📌 Add line clicked")
   addLine()
   renderMeme()
 }
@@ -95,7 +94,7 @@ function onAddSticker(value) {
 }
 
 // UPLOAD FILE FROM DEVICE
-function onImgInput(ev) {  
+function onImgInput(ev) {
   const reader = new FileReader()
 
   reader.onload = function (event) {
@@ -103,18 +102,39 @@ function onImgInput(ev) {
     img.src = event.target.result
 
     img.onload = () => {
-      gMeme.selectedImgId = -1  
-      gMeme.uploadedImgUrl = img.src    
-      // gMeme.selectedImgId = -1
-      // gMeme.imgUrl = img.src
+      gMeme.selectedImgId = -1
+      gMeme.imgUrl = img.src
       drawImgOnCanvas(img)
     }
   }
   reader.readAsDataURL(ev.target.files[0])
 }
 
-function drawImgOnCanvas(img) {
-  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-}
+// function drawImgOnCanvas(img) {
+//   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+//   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+// }
 
+function drawImgOnCanvas(img) {
+  const canvas = document.getElementById("meme-canvas")
+  const ctx = canvas.getContext("2d")
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+  const hRatio = canvas.width / img.width
+  const vRatio = canvas.height / img.height
+  const ratio = Math.min(hRatio, vRatio)
+  const centerShift_x = (canvas.width - img.width * ratio) / 2
+  const centerShift_y = (canvas.height - img.height * ratio) / 2
+
+  ctx.drawImage(
+    img,
+    0,
+    0,
+    img.width,
+    img.height,
+    centerShift_x,
+    centerShift_y,
+    img.width * ratio,
+    img.height * ratio
+  )
+}

@@ -22,13 +22,14 @@
       Saved Mems
     </button>
     <br />
+
     <!-- Filter memes  -->
     <input type="filter" oninput="onFilter(this.value)" />
     <datalist id="keywords"></datalist>
 
     <hr />
-    <!-- KEYWORDS  -->
-    <section class="keywords-container"></section>
+    <!-- KEYWORDS not ready -->
+    <!-- <section class="keywords-container"></section> -->
 
     <!-- GALLERY -->
     <section class="gallery-layout"></section>
@@ -46,96 +47,105 @@
 
         <!-- Controls -->
         <div class="edit-controls">
-          <!-- Text input -->
-          <input
-            id="line-text"
-            type="text"
-            placeholder="Enter text..."
-            oninput="onSetLineTxt(this.value)"
-          />
-          
+
           <!-- Line controls -->
-          <div>
-            <button class="btn btn-primary" onclick="onAddLine()">
-              Add line
-            </button>
-            <button class="btn btn-secondary" onclick="onSwitchLine()">
-              Switch line
-            </button>
-            <button
-              class="btn btn-danger"
-              onclick="onRemoveLine()"
-              class="remove"
+          <div class="line-contol">
+            <!-- Text input -->
+            <input
+              id="line-text"
+              type="text"
+              placeholder="Enter text..."
+              oninput="onSetLineTxt(this.value)"
+            />
+  
+            <div>
+              <button class="btn btn-primary" onclick="onAddLine()">
+                Add line
+                <a class="fa-solid fa-plus"></a>
+              </button>
+              <button class="btn btn-secondary" onclick="onSwitchLine()">
+                Switch line
+              </button>
+              <button
+                class="btn btn-danger"
+                onclick="onRemoveLine()"
+                class="remove"
+              >
+                Remove
+                <a class="fa-solid fa-trash"></a>
+              </button>
+            </div>
+  
+            <!-- Font Style  -->
+            <select
+              name=""
+              class="fontSelect"
+              id="font-select"
+              onchange="onSetFont(this.value)"
             >
-              Remove
-            </button>
+              <option value="Verdana">Verdana</option>
+              <option value="Arial">Arial</option>
+              <option value="Impact">Impact</option>
+            </select>
+
           </div>
 
-          <!-- Font Style  -->
-          <select
-            name=""
-            class="fontSelect"
-            id="font-select"
-            onchange="onSetFont(this.value)"
-          >
-            <option value="Verdana">Verdana</option>
-            <option value="Arial">Arial</option>
-            <option value="Impact">Impact</option>
-          </select>
 
-          <!-- Font Size  -->
-          <div>
-            <button class="btn btn-secondary" onclick="onChangeFontSize(2)">
-              A+
-            </button>
-            <button class="btn btn-secondary" onclick="onChangeFontSize(-2)">
-              A-
-            </button>
+          <div class="tools-section">
+            <!-- Font Size  -->
+            <div>
+              <button class="btn btn-secondary" onclick="onChangeFontSize(2)">
+                A+
+              </button>
+              <button class="btn btn-secondary" onclick="onChangeFontSize(-2)">
+                A-
+              </button>
+            </div>
+            <!-- Smilies for edit  -->
+            <ul class="smilies-edit">
+              <li onclick="onAddSticker('😊')">😊</li>
+              <li onclick="onAddSticker('😂')">😂</li>
+              <li onclick="onAddSticker('😋')">😋</li>
+            </ul>
+  
+            <!-- Direction Edit  -->
+            <section class="direction-edit">
+              <button>
+                <a
+                  onclick="onMoveText('left')"
+                  class="btn-primary fa-solid fa-left-long"
+                ></a>
+              </button>
+              <button>
+                <a
+                  onclick="onMoveText('right')"
+                  class="btn-primary fa-solid fa-right-long"
+                ></a>
+              </button>
+              <button>
+                <a
+                  onclick="onMoveText('center')"
+                  class="btn-primary fa-solid fa-arrows-to-circle"
+                ></a>
+              </button>
+              <button>
+                <a
+                  onclick="onMoveText('up')"
+                  class="btn-primary fa-solid fa-arrow-up"
+                ></a>
+              </button>
+              <button>
+                <a
+                  onclick="onMoveText('down')"
+                  class="btn-primary fa-solid fa-arrow-down"
+                ></a>
+              </button>
+            </section>
+
           </div>
-
-          <!-- Direction Edit  -->
-          <ul class="direction-edit">
-            <li>
-              <a
-                onclick="onMoveText('left')"
-                class="btn-primary fa-solid fa-left-long"
-              ></a>
-            </li>
-            <li>
-              <a
-                onclick="onMoveText('right')"
-                class="btn-primary fa-solid fa-right-long"
-              ></a>
-            </li>
-            <li>
-              <a
-                onclick="onMoveText('center')"
-                class="btn-primary fa-solid fa-arrows-to-circle"
-              ></a>
-            </li>
-            <li>
-              <a
-                onclick="onMoveText('up')"
-                class="btn-primary fa-solid fa-arrow-up"
-              ></a>
-            </li>
-            <li>
-              <a
-                onclick="onMoveText('down')"
-                class="btn-primary fa-solid fa-arrow-down"
-              ></a>
-            </li>
-          </ul>
 
           <!-- Color Picker-->
           <input type="color" id="text-color" onchange="onSetColor(event)" />
-
-          <!-- Smilies for edit  -->
-          <ul class="direction-edit">
-            <li onclick="onAddSticker('😊')">😊</li>
-            <li onclick="onAddSticker('😂')">😂</li>
-            <li onclick="onAddSticker('😋')">😋</li>
-          </ul>
 
           <section class="fotter-edit">
             <!-- Download -->
@@ -147,7 +157,7 @@
               ><i class="fa-solid fa-download"></i>Download</a
             >
             <button class="save-meme btn btn-primary" onclick="onSaveMeme()">
-            <i class="fa-solid fa-floppy-disk"></i>Save meme
+              <i class="fa-solid fa-floppy-disk"></i>Save meme
             </button>
             <div class="share-container"></div>
             <!-- UPLOAD TO Cloudinary -->
