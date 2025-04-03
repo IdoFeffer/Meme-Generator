@@ -15,14 +15,13 @@ function renderMeme() {
     gCtx.drawImage(img, 0, 0, canvas.width, canvas.height)
 
     meme.lines.forEach((line, idx) => {
-      
-      gCtx.font = `${line.size}px ${line.font || 'Impact'}`
+      gCtx.font = `${line.size}px ${line.font || "Impact"}`
       gCtx.textAlign = "center"
       gCtx.textBaseline = "middle"
 
       gCtx.fillStyle = line.color
       gCtx.fillText(line.txt, line.pos.x, line.pos.y)
-    
+
       if (idx === meme.selectedLineIdx) {
         const textMetrics = gCtx.measureText(line.txt)
         const width = textMetrics.width
@@ -59,7 +58,7 @@ function onAddLine() {
 function onSwitchLine() {
   const meme = getMeme()
   const prevColor = meme.lines[meme.selectedLineIdx].color
-  
+
   switchLine()
 
   const newLine = meme.lines[meme.selectedLineIdx]
@@ -69,11 +68,11 @@ function onSwitchLine() {
   renderMeme()
 }
 
-// REMOVE 
-function onRemoveLine(){
+// REMOVE
+function onRemoveLine() {
   gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 
-  if (gMeme.lines.length === 0){
+  if (gMeme.lines.length === 0) {
     gMeme.selectedLineIdx = -1
   } else {
     gMeme.selectedLineIdx = 0
@@ -81,7 +80,15 @@ function onRemoveLine(){
   renderMeme()
 }
 
-// SAVE MEME 
-function onSavememe(){
-
+function onAddSticker(value) {
+  const newLine = {
+    txt: value,
+    size: 20,
+    color: "white",
+    pos: { x: 250, y: 250 },
+    isDrag: false,
+  }
+  gMeme.lines.push(newLine)
+  gMeme.selectedLineIdx = gMeme.lines.length - 1
+  renderMeme()
 }

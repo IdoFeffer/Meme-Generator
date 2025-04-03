@@ -17,8 +17,8 @@
     <button onclick="onBackToGallery()">Gallery</button>
     <button onclick="onRandomMeme()">Surprise me!</button>
     <button onclick="onShowSavedMeme()">Saved Mems</button>
-    <br/>
-    
+    <br />
+
     <!-- Filter memes  -->
     <input type="filter" oninput="onFilter(this.value)" />
     <datalist id="keywords"></datalist>
@@ -69,6 +69,12 @@
             <option value="Impact">Impact</option>
           </select>
 
+          <!-- Font Size  -->
+          <div>
+            <button onclick="onChangeFontSize(2)">A+</button>
+            <button onclick="onChangeFontSize(-2)">A-</button>
+          </div>
+
           <!-- Direction Edit  -->
           <ul class="direction-edit">
             <li>
@@ -86,13 +92,24 @@
                 class="fa-solid fa-arrows-to-circle"
               ></a>
             </li>
+            <li>
+              <a onclick="onMoveText('up')"
+              class="fa-solid fa-arrow-up"></a>
+            </li>
+            <li>
+              <a
+                onclick="onMoveText('down')"
+                class="fa-solid fa-arrow-down"
+              ></a>
+            </li>
           </ul>
 
-          <!-- Font Size  -->
-          <div>
-            <button onclick="onChangeFontSize(2)">A+</button>
-            <button onclick="onChangeFontSize(-2)">A-</button>
-          </div>
+          <!-- Smilies for edit  -->
+          <ul class="direction-edit">
+            <li onclick="onAddSticker('😊')">😊</li>
+            <li onclick="onAddSticker('😂')">😂</li>
+            <li onclick="onAddSticker('😋')">😋</li>
+          </ul>
 
           <section class="fotter-edit">
             <!-- Download -->
