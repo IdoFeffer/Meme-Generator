@@ -61,6 +61,7 @@ const keywords = {
   cat: 3,
   dog: 8,
 }
+
 function getMeme() {
   return gMeme
 }
@@ -98,6 +99,7 @@ function changeFontSize(diff) {
   gMeme.lines[gMeme.selectedLineIdx].size += diff
 }
 
+// ADD LINE 
 function addLine() {
   const newLine = {
     txt: "New line",
@@ -111,6 +113,7 @@ function addLine() {
   gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
+// SWITCH LINE 
 function switchLine() {
   var currIdx = gMeme.selectedLineIdx
 

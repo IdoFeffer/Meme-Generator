@@ -3,12 +3,12 @@ let gLastPos
 var gIsMouseDown = false
 var gElCanvas = document.getElementById("meme-canvas")
 
-
 function onInit() {
   gElCanvas = document.getElementById("meme-canvas")
   gCtx = gElCanvas.getContext("2d")
 
   renderGallery()
+  onKeywords()
   gElCanvas.addEventListener("click", onCanvasClick)
 
   gElCanvas.addEventListener("mousedown", onDown)
@@ -166,8 +166,7 @@ function getLineClickedIdx(pos) {
     const yStart = line.pos.y - textHeight / 2
     const yEnd = line.pos.y + textHeight / 2
 
-    if (pos.x >= xStart && pos.x <= xEnd
-      && pos.y >= yStart && pos.y <= yEnd) {
+    if (pos.x >= xStart && pos.x <= xEnd && pos.y >= yStart && pos.y <= yEnd) {
       return i
     }
   }
@@ -187,17 +186,16 @@ function onMoveText(direction) {
   else if (direction === "center") {
     const canvas = document.getElementById("meme-canvas")
     line.pos.x = canvas.width / 2
-  }
-  else if (direction === 'up') line.pos.y -= 5
-  else if (direction === 'down') line.pos.y += 5
-  
+  } else if (direction === "up") line.pos.y -= 5
+  else if (direction === "down") line.pos.y += 5
+
   renderMeme()
 }
 
 function onRandomMeme() {
   const imgs = getImgs()
   const randomImg = imgs[Math.floor(Math.random() * imgs.length)]
-  gMeme.selectedLineIdx = randomImg.id
+  gMeme.selectedImgId = randomImg.id
 
   gMeme.lines = [
     {
@@ -216,3 +214,24 @@ function onRandomMeme() {
   renderMeme()
 }
 
+function onKeywords() {
+  const elKeywords = document.querySelector(".keywords-container")
+  const strHTMLs = Object.entries(keywords).map(([word, count]) => {
+    return `
+    <span onclick="onKeywordClick('${word}')"
+          style='font-size: ${count + 12}px'>${word}
+    </span>
+    `
+  })
+  elKeywords.innerHTML = strHTMLs.join("")
+  // document.querySelector(".keywords-container").classList.add("block")
+}
+
+function onKeywordClick(word){
+  keywords[word]++
+
+  const filterImg = getImgs().filter(img.keywords.includes(word))
+  renderGallery()
+  if (!keywords[word]) keywords[word] = 1
+  else keywords[word]++
+}

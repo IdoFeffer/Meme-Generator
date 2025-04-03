@@ -116,3 +116,4 @@ function drawImgOnCanvas(img) {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }
+
