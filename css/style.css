@@ -1,6 +1,8 @@
 /* BASIC  */
 @import url("basic/base.css");
 @import url("basic/layout.css");
+@import url("setup/var.css");
+
 
 /* COMPONENTS  */
 @import url("components/buttons.css");

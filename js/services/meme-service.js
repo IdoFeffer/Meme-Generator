@@ -22,26 +22,30 @@ var gMeme = {
 }
 
 var gImgs = [
-  { id: 1, url: "img/meme-imgs(square)/1.jpg", keywords: ["funny", "cat"] },
-  { id: 2, url: "img/meme-imgs(square)/2.jpg", keywords: ["baby", "angry"] },
-  { id: 3, url: "img/meme-imgs(square)/3.jpg", keywords: ["dog", "happy"] },
+  { id: 1, url: "img/meme-imgs(square)/1.jpg", keywords: ["funny", "trump"] },
+  { id: 2, url: "img/meme-imgs(square)/2.jpg", keywords: ["baby", "dog"] },
+  { id: 3, url: "img/meme-imgs(square)/3.jpg", keywords: ["dog", "baby"] },
   { id: 4, url: "img/meme-imgs(square)/4.jpg", keywords: ["cat", "cute"] },
-  { id: 5, url: "img/meme-imgs(square)/5.jpg", keywords: ["man", "funny"] },
-  { id: 6, url: "img/meme-imgs(square)/6.jpg", keywords: ["surprised"] },
-  { id: 7, url: "img/meme-imgs(square)/7.jpg", keywords: ["baby", "funny"] },
-  { id: 8, url: "img/meme-imgs(square)/8.jpg", keywords: ["sad", "woman"] },
-  { id: 9, url: "img/meme-imgs(square)/9.jpg", keywords: ["obama", "cool"] },
-  { id: 10, url: "img/meme-imgs(square)/10.jpg", keywords: ["kiss", "love"] },
-  { id: 11, url: "img/meme-imgs(square)/11.jpg", keywords: ["sports", "men"] },
+  { id: 5, url: "img/meme-imgs(square)/5.jpg", keywords: ["baby", "funny"] },
+  { id: 6, url: "img/meme-imgs(square)/6.jpg", keywords: ["surprised", "man"] },
+  {
+    id: 7,
+    url: "img/meme-imgs(square)/7.jpg",
+    keywords: ["baby", "surprised"],
+  },
+  { id: 8, url: "img/meme-imgs(square)/8.jpg", keywords: ["surprised", "man"] },
+  { id: 9, url: "img/meme-imgs(square)/9.jpg", keywords: ["baby", "cool"] },
+  { id: 10, url: "img/meme-imgs(square)/10.jpg", keywords: ["obama", "funny"] },
+  { id: 11, url: "img/meme-imgs(square)/11.jpg", keywords: ["funny", "kiss"] },
   { id: 12, url: "img/meme-imgs(square)/12.jpg", keywords: ["you", "point"] },
   {
     id: 13,
     url: "img/meme-imgs(square)/13.jpg",
-    keywords: ["movie", "serious"],
+    keywords: ["movie", "you"],
   },
   { id: 14, url: "img/meme-imgs(square)/14.jpg", keywords: ["matrix", "cool"] },
   { id: 15, url: "img/meme-imgs(square)/15.jpg", keywords: ["funny", "man"] },
-  { id: 16, url: "img/meme-imgs(square)/16.jpg", keywords: ["happy", "boy"] },
+  { id: 16, url: "img/meme-imgs(square)/16.jpg", keywords: ["happy", "man"] },
   { id: 17, url: "img/meme-imgs(square)/17.jpg", keywords: ["putin", "funny"] },
   { id: 18, url: "img/meme-imgs(square)/18.jpg", keywords: ["toy", "buzz"] },
 ]
@@ -51,6 +55,12 @@ const userService = {
   get,
 }
 
+const keywords = {
+  funny: 12,
+  baby: 5,
+  cat: 3,
+  dog: 8,
+}
 function getMeme() {
   return gMeme
 }
@@ -61,6 +71,10 @@ function getImgs() {
 
 function getImgById(id) {
   const img = gImgs.find((img) => img.id === id)
+  if (!img) {
+    console.warn(`⚠️ Image with id ${id} not found`)
+    return null
+  }
   return img.url
 }
 

@@ -1,13 +1,12 @@
 "use strict"
-
+var selectedImage = null
 var gCtx
 
 function renderMeme() {
   const meme = getMeme()
-
   const img = new Image()
-  img.src = getImgById(meme.selectedImgId)
-
+  img.src =
+    meme.selectedImgId === -1 ? meme.imgUrl : getImgById(meme.selectedImgId)
   img.onload = () => {
     const canvas = document.getElementById("meme-canvas")
     const gCtx = canvas.getContext("2d")
@@ -80,6 +79,7 @@ function onRemoveLine() {
   renderMeme()
 }
 
+// ADD STICKER
 function onAddSticker(value) {
   const newLine = {
     txt: value,
@@ -91,4 +91,28 @@ function onAddSticker(value) {
   gMeme.lines.push(newLine)
   gMeme.selectedLineIdx = gMeme.lines.length - 1
   renderMeme()
+}
+
+// UPLOAD FILE FROM DEVICE
+function onImgInput(ev) {  
+  const reader = new FileReader()
+
+  reader.onload = function (event) {
+    const img = new Image()
+    img.src = event.target.result
+
+    img.onload = () => {
+      gMeme.selectedImgId = -1  
+      gMeme.uploadedImgUrl = img.src    
+      // gMeme.selectedImgId = -1
+      // gMeme.imgUrl = img.src
+      drawImgOnCanvas(img)
+    }
+  }
+  reader.readAsDataURL(ev.target.files[0])
+}
+
+function drawImgOnCanvas(img) {
+  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }

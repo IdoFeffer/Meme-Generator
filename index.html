@@ -14,15 +14,15 @@
   <body onload="onInit()" class="main-layout grid">
     <h1>Meme Generator - sprint 2</h1>
 
-    <button onclick="onBackToGallery()">Gallery</button>
-    <button onclick="onRandomMeme()">Surprise me!</button>
-    <button onclick="onShowSavedMeme()">Saved Mems</button>
+    <button class="btn btn-primary" onclick="onBackToGallery()">Gallery</button>
+    <button class="btn btn-primary" onclick="onRandomMeme()">Surprise me!</button>
+    <button class="btn btn-primary" onclick="onShowSavedMeme()">Saved Mems</button>
     <br />
-
     <!-- Filter memes  -->
     <input type="filter" oninput="onFilter(this.value)" />
     <datalist id="keywords"></datalist>
-
+    
+    <hr>
     <!-- GALLERY -->
     <section class="gallery-layout"></section>
 
@@ -31,6 +31,7 @@
 
     <!-- EDIT MEMS -->
     <section class="editor-mems hidden">
+
       <div class="editor-layout">
         <!-- Canvas -->
         <div class="canvas-container">
@@ -39,6 +40,7 @@
 
         <!-- Controls -->
         <div class="edit-controls">
+
           <!-- Text input -->
           <input
             id="line-text"
@@ -47,14 +49,11 @@
             oninput="onSetLineTxt(this.value)"
           />
 
-          <!-- Color Picker-->
-          <input type="color" id="text-color" onchange="onSetColor(event)" />
-
           <!-- Line controls -->
           <div>
-            <button onclick="onAddLine()">Add line</button>
-            <button onclick="onSwitchLine()">Switch line</button>
-            <button onclick="onRemoveLine()" class="remove">Remove</button>
+            <button class="btn btn-primary" onclick="onAddLine()">Add line</button>
+            <button class="btn btn-secondary" onclick="onSwitchLine()">Switch line</button>
+            <button class="btn btn-danger" onclick="onRemoveLine()" class="remove">Remove</button>
           </div>
 
           <!-- Font Style  -->
@@ -71,38 +70,41 @@
 
           <!-- Font Size  -->
           <div>
-            <button onclick="onChangeFontSize(2)">A+</button>
-            <button onclick="onChangeFontSize(-2)">A-</button>
+            <button class="btn btn-secondary" onclick="onChangeFontSize(2)">A+</button>
+            <button class="btn btn-secondary" onclick="onChangeFontSize(-2)">A-</button>
           </div>
 
           <!-- Direction Edit  -->
           <ul class="direction-edit">
             <li>
-              <a onclick="onMoveText('left')" class="fa-solid fa-left-long"></a>
+              <a onclick="onMoveText('left')" class="btn-primary fa-solid fa-left-long"></a>
             </li>
             <li>
               <a
                 onclick="onMoveText('right')"
-                class="fa-solid fa-right-long"
+                class=" btn-primary fa-solid fa-right-long"
               ></a>
             </li>
             <li>
               <a
                 onclick="onMoveText('center')"
-                class="fa-solid fa-arrows-to-circle"
+                class=" btn-primary fa-solid fa-arrows-to-circle"
               ></a>
             </li>
             <li>
-              <a onclick="onMoveText('up')"
-              class="fa-solid fa-arrow-up"></a>
+              <a onclick="onMoveText('up')" class="btn-primary fa-solid fa-arrow-up"></a>
             </li>
             <li>
               <a
                 onclick="onMoveText('down')"
-                class="fa-solid fa-arrow-down"
+                class="btn-primary fa-solid fa-arrow-down"
               ></a>
             </li>
           </ul>
+
+          <!-- Color Picker-->
+          <input type="color" id="text-color" onchange="onSetColor(event)" />
+
 
           <!-- Smilies for edit  -->
           <ul class="direction-edit">
@@ -113,10 +115,10 @@
 
           <section class="fotter-edit">
             <!-- Download -->
-            <a href="#" onclick="onDownloadCanvas(this)" download
+            <a href="#" class="btn-primary" onclick="onDownloadCanvas(this)" download
               ><i class="fa-solid fa-download"></i>Download</a
             >
-            <button class="save-meme" onclick="onSaveMeme()">Save meme</button>
+            <button class="save-meme btn btn-primary" onclick="onSaveMeme()">Save meme</button>
             <div class="share-container"></div>
             <!-- UPLOAD TO Cloudinary -->
             <form
@@ -126,11 +128,20 @@
               onsubmit="onUploadImg(event)"
             >
               <input name="img" id="imgData" type="hidden" />
-              <button class="btn" type="submit">
+              <button class="btn btn-primary" type="submit">
                 <i class="fa-solid fa-share-from-square"></i>Upload
               </button>
             </form>
           </section>
+
+          <!-- Upload file from device  -->
+          <input class="btn"
+            type="file"
+            accept="image/*"
+            id="imageInput"
+            onchange="onImgInput(event)"
+          />
+
         </div>
       </div>
     </section>

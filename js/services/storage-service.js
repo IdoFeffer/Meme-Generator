@@ -3,7 +3,6 @@
 const STORAGE_KEY = "savedMemes"
 var gSavedMems = []
 
-
 function saveToStorage(key, value) {
   const json = JSON.stringify(value)
   localStorage.setItem(key, json)
@@ -17,6 +16,7 @@ function loadFromStorage(key) {
 function onSaveMeme() {
   const savedMems = loadFromStorage(STORAGE_KEY) || []
   const memeCopy = JSON.parse(JSON.stringify(gMeme))
+
   savedMems.push(memeCopy)
   saveToStorage(STORAGE_KEY, savedMems)
 }
@@ -38,14 +38,15 @@ function onShowSavedMeme() {
   gSavedMems = loadFromStorage("savedMems") || []
   const elSaved = document.querySelector(".saved-memes")
 
-  const strHTMLs = gSavedMems.map((meme, idx) => {
-    const imgUrl = getImgById(meme.selectedImgId)
+  const strHTMLs = savedMems.map((meme, idx) => {
+    const imgUrl = meme.uploadedImgUrl || getImgById(meme.selectedImgId)
     return `
-      <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
-    `
+            <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
+          `
   })
   elSaved.innerHTML = strHTMLs.join("")
   elSaved.classList.remove("hidden")
+
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.add("hidden")
 }

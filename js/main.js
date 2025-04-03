@@ -190,6 +190,7 @@ function onMoveText(direction) {
   }
   else if (direction === 'up') line.pos.y -= 5
   else if (direction === 'down') line.pos.y += 5
+  
   renderMeme()
 }
 
