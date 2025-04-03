@@ -101,3 +101,15 @@ button {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   align-items: center;
 }
+
+.direction-edit button {
+  padding: 0.1em;
+  border-radius: 6px;
+  background-color: #dbeafe;
+  margin: 2px;
+}
+
+.direction-edit button i,
+.direction-edit button a {
+  font-size: 0.9rem;
+}

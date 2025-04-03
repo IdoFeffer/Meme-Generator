@@ -110,11 +110,6 @@ function onImgInput(ev) {
   reader.readAsDataURL(ev.target.files[0])
 }
 
-// function drawImgOnCanvas(img) {
-//   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-//   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-// }
-
 function drawImgOnCanvas(img) {
   const canvas = document.getElementById("meme-canvas")
   const ctx = canvas.getContext("2d")

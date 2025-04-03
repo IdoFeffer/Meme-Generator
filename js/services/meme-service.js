@@ -73,10 +73,7 @@ function getImgs() {
 function getImgById(id) {
   if (id === 1) return img.url
   const img = gImgs.find((img) => img.id === id)
-  if (!img) {
-    console.warn(`⚠️ Image with id ${id} not found`)
-    return null
-  }
+  if (!img) return
   return img.url
 }
 

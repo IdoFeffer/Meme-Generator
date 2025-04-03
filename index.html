@@ -12,14 +12,27 @@
   </head>
 
   <body onload="onInit()" class="main-layout grid">
+
+    <header class="main-header flex space-between align-center full">
+      <div class="main-nav-container flex space-between align-center">
+        <p class="logo header">FUNNY MEMES</p>
+        <nav class="main-nav">
+          <ul class="flex clean-list">
+            <button class="btn btn-primary" onclick="onBackToGallery()">Gallery</button>
+            <button class="btn btn-primary" onclick="onShowSavedMeme()">
+              Saved Mems
+            </button>
+        
+          </ul>
+        </nav>
+        <button class="menu" type="button" onclick="toggleMenu()">&#9776</button>
+      </div>
+    </header>
+
     <h1>Meme Generator - sprint 2</h1>
 
-    <button class="btn btn-primary" onclick="onBackToGallery()">Gallery</button>
     <button class="btn btn-primary" onclick="onRandomMeme()">
       Surprise me!
-    </button>
-    <button class="btn btn-primary" onclick="onShowSavedMeme()">
-      Saved Mems
     </button>
     <br />
 
@@ -185,6 +198,21 @@
         </div>
       </div>
     </section>
+
+    <footer class="full main-footer flex space-between align-center">
+      <h3 class="logo">Funny Memes</h3>
+      <h4 class="footer-rights">By Ido Feffer</h4>
+      <div>
+        <ul class="footer-social social-links">
+          <li class="facebook">
+            <a href="https://www.facebook.com/IdoFeffer" class="fa-brands fa-facebook-f"></a>
+          </li>          
+          <li class="github">
+            <a href="https://github.com/IdoFeffer" class="fa-brands fa-github"></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
 
     <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>

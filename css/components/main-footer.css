@@ -1,0 +1,28 @@
+.social-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1rem; 
+  font-size: 30px;
+
+}
+
+/* Main Footer  */
+.main-footer {
+  display: flex;
+  flex-direction: column;
+  place-self: center;
+  height: 320px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.main-footer a {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+}
+

@@ -8,7 +8,6 @@ function onInit() {
   gCtx = gElCanvas.getContext("2d")
 
   renderGallery()
-  // onKeywords()
   gElCanvas.addEventListener("click", onCanvasClick)
 
   gElCanvas.addEventListener("mousedown", onDown)
@@ -17,7 +16,7 @@ function onInit() {
 
   gElCanvas.addEventListener("touchstart", onDown, { passive: false })
   gElCanvas.addEventListener("touchmove", onMove, { passive: false })
-  gElCanvas.addEventListener("touchend", onUp, { passive: false })
+  gElCanvas.addEventListener("touchend", onUp)
   renderMeme()
 }
 
@@ -50,7 +49,7 @@ function onCanvasClick(ev) {
   const x = ev.offsetX
   const y = ev.offsetY
   const meme = getMeme()
-  const prevColor = meme.lines[meme.selectedLineIdx].color
+  // const prevColor = meme.lines[meme.selectedLineIdx].color
 
   meme.lines.forEach((line, idx) => {
     ctx.font = `${line.size}px Impact`
@@ -62,7 +61,7 @@ function onCanvasClick(ev) {
     const yStart = line.pos.y - textHeight + 10
     const yEnd = line.pos.y
 
-    if (x >= xStart && y <= xEnd && y >= yStart && y <= yEnd) {
+      if (x >= xStart && x <= xEnd && y >= yStart && y <= yEnd) {
       meme.selectedLineIdx = idx
       renderMeme()
 
@@ -110,6 +109,8 @@ function getEvPos(ev) {
 
 function onDown(ev) {
   const pos = getEvPos(ev)
+  gElCanvas.style.cursor = "grabbing"
+
 
   if (ev.type === "mousedown") ev.preventDefault()
 
@@ -119,10 +120,11 @@ function onDown(ev) {
   gMeme.selectedLineIdx = lineIdx
   gMeme.lines[lineIdx].isDrag = true
   gLastPos = pos
-  document.body.style.cursor = "grabbing"
+  gElCanvas.style.cursor = "grab"
 }
 
 function onMove(ev) {
+
   const line = gMeme.lines[gMeme.selectedLineIdx]
   if (!line.isDrag) return
 
@@ -138,14 +140,13 @@ function onMove(ev) {
 }
 
 function onUp() {
-  console.log('🖱️ Mouse/Touch up')
+  
   gIsMouseDown = false
 
   const line = gMeme.lines[gMeme.selectedLineIdx]
   if (line) line.isDrag = false
-  document.body.style.cursor = "default"
+  document.body.style.cursor = "grab"
 }
-
 
 function getLineClickedIdx(pos) {
   const canvas = document.getElementById("meme-canvas")
@@ -158,7 +159,7 @@ function getLineClickedIdx(pos) {
 
     ctx.font = `${line.size}px Impact`
     ctx.textAlign = "center"
-    ctx.textBaseline = "middle"
+    ctx.textBaseline = "top"
 
     const textWidth = ctx.measureText(line.txt).width
     const textHeight = line.size + 10
@@ -236,4 +237,16 @@ function onKeywordClick(word){
   renderGallery()
   if (!keywords[word]) keywords[word] = 1
   else keywords[word]++
+}
+
+function toggleMenu() {
+  document.body.classList.toggle("menu-open")
+}
+
+function toggleModal() {
+  document.querySelector(".modal").classList.toggle("hidden")
+}
+
+function dropdowntoggle() {
+  document.querySelectorAll(".dropdown-toggle")
 }

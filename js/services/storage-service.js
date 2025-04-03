@@ -25,14 +25,6 @@ function onSaveMeme() {
   saveToStorage(STORAGE_KEY, savedMems)
 }
 
-// function onSaveMeme() {
-//   const savedMems = loadFromStorage(STORAGE_KEY) || []
-//   const memeCopy = JSON.parse(JSON.stringify(gMeme))
-
-//   savedMems.push(memeCopy)
-//   saveToStorage(STORAGE_KEY, savedMems)
-// }
-
 function save(userPrefs) {
   saveToStorage(STORAGE_KEY, userPrefs)
 }
