@@ -16,10 +16,18 @@
 
     <button onclick="onBackToGallery()">Gallery</button>
     <button onclick="onRandomMeme()">Surprise me!</button>
-
+    <button onclick="onShowSavedMeme()">Saved Mems</button>
+    <br/>
+    
+    <!-- Filter memes  -->
+    <input type="filter" oninput="onFilter(this.value)" />
+    <datalist id="keywords"></datalist>
 
     <!-- GALLERY -->
     <section class="gallery-layout"></section>
+
+    <!-- SAVED MEMES  -->
+    <section class="saved-memes hidden"></section>
 
     <!-- EDIT MEMS -->
     <section class="editor-mems hidden">
@@ -49,7 +57,7 @@
             <button onclick="onRemoveLine()" class="remove">Remove</button>
           </div>
 
-          <!-- Font  -->
+          <!-- Font Style  -->
           <select
             name=""
             class="fontSelect"
@@ -61,20 +69,36 @@
             <option value="Impact">Impact</option>
           </select>
 
+          <!-- Direction Edit  -->
           <ul class="direction-edit">
-            <li><a onclick="onMoveText('left')" class="fa-solid fa-left-long"></a></li>
-            <li><a onclick="onMoveText('right')" class="fa-solid fa-right-long"></a></li>
-            <li><a onclick="onMoveText('center')" class="fa-solid fa-arrows-to-circle"></a></li>
+            <li>
+              <a onclick="onMoveText('left')" class="fa-solid fa-left-long"></a>
+            </li>
+            <li>
+              <a
+                onclick="onMoveText('right')"
+                class="fa-solid fa-right-long"
+              ></a>
+            </li>
+            <li>
+              <a
+                onclick="onMoveText('center')"
+                class="fa-solid fa-arrows-to-circle"
+              ></a>
+            </li>
           </ul>
 
+          <!-- Font Size  -->
           <div>
             <button onclick="onChangeFontSize(2)">A+</button>
             <button onclick="onChangeFontSize(-2)">A-</button>
           </div>
 
-          <section class="fotter">
+          <section class="fotter-edit">
             <!-- Download -->
-            <a href="#" onclick="onDownloadCanvas(this)" download><i class="fa-solid fa-download"></i>Download</a>
+            <a href="#" onclick="onDownloadCanvas(this)" download
+              ><i class="fa-solid fa-download"></i>Download</a
+            >
             <button class="save-meme" onclick="onSaveMeme()">Save meme</button>
             <div class="share-container"></div>
             <!-- UPLOAD TO Cloudinary -->
@@ -85,19 +109,19 @@
               onsubmit="onUploadImg(event)"
             >
               <input name="img" id="imgData" type="hidden" />
-              <button class="btn" type="submit"><i class="fa-solid fa-share-from-square"></i>Upload</button>
+              <button class="btn" type="submit">
+                <i class="fa-solid fa-share-from-square"></i>Upload
+              </button>
             </form>
-
           </section>
         </div>
-
       </div>
     </section>
 
+    <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/upload-service.js"></script>
-    <script src="js/services/util-service.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/main.js"></script>

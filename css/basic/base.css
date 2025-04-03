@@ -32,14 +32,3 @@ canvas {
 .hidden {
   display: none !important;
 }
-
-.direction-edit {
-  list-style-type: none;
-  display: flex;
-  gap: 10px;
-}
-
-.fotter {
-  display: flex;
-  flex-direction: row;
-}

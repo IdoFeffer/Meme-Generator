@@ -25,3 +25,30 @@
   border: 1px solid red;
   max-width: 200px;
 }
+
+.fotter-edit {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.direction-edit {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+}
+
+.saved-memes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  justify-items: center;
+}
+
+.saved-memes img {
+  width: 100px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  cursor: pointer;
+}

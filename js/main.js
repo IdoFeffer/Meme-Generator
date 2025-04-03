@@ -166,12 +166,8 @@ function getLineClickedIdx(pos) {
     const yStart = line.pos.y - textHeight / 2
     const yEnd = line.pos.y + textHeight / 2
 
-    // console.log(`🔍 Checking Line ${i}`)
-    // console.log(`Bounds: x ${xStart}–${xEnd}, y ${yStart}–${yEnd}`)
-    // console.log(`Click at: x=${pos.x}, y=${pos.y}`)
-
-    if (pos.x >= xStart && pos.x <= xEnd && pos.y >= yStart && pos.y <= yEnd) {
-      console.log(`✅ Line ${i} was clicked!`)
+    if (pos.x >= xStart && pos.x <= xEnd
+      && pos.y >= yStart && pos.y <= yEnd) {
       return i
     }
   }

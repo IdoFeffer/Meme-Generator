@@ -1,8 +1,5 @@
 "use strict"
 
-const STORAGE_KEY = "savedMemes"
-
-
 var gMeme = {
   selectedImgId: 1,
   selectedLineIdx: 0,
@@ -14,7 +11,7 @@ var gMeme = {
       pos: { x: 250, y: 50 },
       isDrag: false,
     },
-    { 
+    {
       txt: "Bottom text",
       size: 20,
       color: "white",
@@ -37,12 +34,16 @@ var gImgs = [
   { id: 10, url: "img/meme-imgs(square)/10.jpg", keywords: ["kiss", "love"] },
   { id: 11, url: "img/meme-imgs(square)/11.jpg", keywords: ["sports", "men"] },
   { id: 12, url: "img/meme-imgs(square)/12.jpg", keywords: ["you", "point"] },
-  { id: 13, url: "img/meme-imgs(square)/13.jpg", keywords: ["movie", "serious"] },
+  {
+    id: 13,
+    url: "img/meme-imgs(square)/13.jpg",
+    keywords: ["movie", "serious"],
+  },
   { id: 14, url: "img/meme-imgs(square)/14.jpg", keywords: ["matrix", "cool"] },
   { id: 15, url: "img/meme-imgs(square)/15.jpg", keywords: ["funny", "man"] },
   { id: 16, url: "img/meme-imgs(square)/16.jpg", keywords: ["happy", "boy"] },
   { id: 17, url: "img/meme-imgs(square)/17.jpg", keywords: ["putin", "funny"] },
-  { id: 18, url: "img/meme-imgs(square)/18.jpg", keywords: ["toy", "buzz"] }
+  { id: 18, url: "img/meme-imgs(square)/18.jpg", keywords: ["toy", "buzz"] },
 ]
 
 const userService = {
@@ -88,10 +89,10 @@ function addLine() {
     txt: "New line",
     size: 20,
     color: "white",
-    pos: { x: 250, y: 250 }, 
-    isDrag: false
+    pos: { x: 250, y: 250 },
+    isDrag: false,
   }
-  
+
   gMeme.lines.push(newLine)
   gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
@@ -101,21 +102,4 @@ function switchLine() {
 
   var nextIdx = (currIdx + 1) % gMeme.lines.length
   gMeme.selectedLineIdx = nextIdx
-}
-
-function onSaveMeme(){
-  const savedMems = loadFromStorage(STORAGE_KEY) || []
-  const memeCopy = JSON.parse(JSON.stringify(gMeme))
-  savedMems.push(memeCopy)
-  saveToStorage(STORAGE_KEY, savedMems)
-  console.log('💾 Meme saved:', savedMems)
-}
-
-function save(userPrefs) {
-  saveToStorage(STORAGE_KEY, userPrefs)
-}
-
-function get() {
-  const data = localStorage.getItem(STORAGE_KEY)
-  return data ? JSON.parse(data) : null
 }
