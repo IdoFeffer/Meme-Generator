@@ -49,6 +49,7 @@ function onChangeFontSize(diff) {
 
 // ADD LINE
 function onAddLine() {
+  console.log('📌 Add line clicked')
   addLine()
   renderMeme()
 }
