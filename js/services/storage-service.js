@@ -17,10 +17,13 @@ function onSaveMeme() {
   const savedMems = loadFromStorage(STORAGE_KEY) || []
   const memeCopy = JSON.parse(JSON.stringify(gMeme))
 
-  if (gMeme.selectedImgId === -1 && gMeme.imgUrl) {
-    memeCopy.imgUrl = gMeme.imgUrl
+  // if (gMeme.selectedImgId === -1 && gMeme.imgUrl) {
+  //   gMeme.imgUrl = memeCopy.imgUrl 
+  // }
+  if (gMeme.selectedImgId === -1) {
+    memeCopy.selectedImgId = 19
+    delete memeCopy.imgUrl
   }
-
   savedMems.push(memeCopy)
   saveToStorage(STORAGE_KEY, savedMems)
 }
@@ -42,17 +45,9 @@ function onShowSavedMeme() {
   var savedMems = loadFromStorage("savedMems") || []
   const elSaved = document.querySelector(".saved-memes")
 
-  // const strHTMLs = savedMems.map((meme, idx) => {
-  //   const imgUrl = meme.uploadedImgUrl || getImgById(meme.selectedImgId)
-  //   return `
-  //           <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
-  //         `
-  // })
   const strHTMLs = savedMems.map((meme, idx) => {
-    console.log('🖼 imgUrl:', imgUrl)
     const imgUrl = meme.imgUrl || getImgById(meme.selectedImgId)
     if (!imgUrl) {
-      console.warn(`⚠️ Missing image for meme at index ${idx}`)
       return ''
     } 
     return `
@@ -70,7 +65,9 @@ function onShowSavedMeme() {
 function onLoadSavedMeme(idx) {
   const savedMems = loadFromStorage("savedMemes") || []
   const memeToLoad = savedMems[idx]
-  if (!memeToLoad) return console.warn("❌ Meme not found")
+  if (!memeToLoad) return 
+
+  if (memeToLoad === -1) memeToLoad = 1 
 
   gMeme = JSON.parse(JSON.stringify(memeToLoad)) 
   renderMeme()

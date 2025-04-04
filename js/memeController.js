@@ -33,7 +33,6 @@ function renderMeme() {
     })
   }
   document.querySelector(".filter-words").classList.add("hidden")
-
 }
 
 // MEME TEXT EDIT
@@ -104,9 +103,19 @@ function onImgInput(ev) {
     img.src = event.target.result
 
     img.onload = () => {
-      gMeme.selectedImgId = -1
-      gMeme.imgUrl = img.src
-      drawImgOnCanvas(img)
+      // gMeme.selectedImgId = -1
+      // gMeme.imgUrl = img.src
+      // drawImgOnCanvas(img)
+      const newImg = {
+        id: gImgs.length + 1,
+        url: img.src,
+        keywords: ['uploaded']
+      }
+      gImgs.push(newImg)
+      saveToStorage(gImgs)
+      gMeme.selectedImgId = newImg.id
+      // gMeme.imgUrl = img.src
+      renderMeme()
     }
   }
   reader.readAsDataURL(ev.target.files[0])

@@ -13,10 +13,15 @@
 .main-footer {
   display: flex;
   flex-direction: column;
-  place-self: center;
-  height: 320px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 200px;
+
   text-align: center;
   padding: 2rem;
+  background-color: #f9f9f9
 }
 
 .main-footer a {
@@ -24,5 +29,7 @@
   height: 43px;
   display: grid;
   place-items: center;
+  text-decoration: none;
+
 }
 

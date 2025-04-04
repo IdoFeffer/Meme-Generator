@@ -5,6 +5,7 @@
 body {
   background-color: whitesmoke;
   text-align: center;
+  margin: 0 auto;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -32,4 +33,17 @@ canvas {
 
 .hidden {
   display: none !important;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }

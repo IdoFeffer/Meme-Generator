@@ -12,193 +12,196 @@
   </head>
 
   <body onload="onInit()" class="main-layout grid">
-
-    <div class="main-screen" onclick="toggleMenu()"></div>
-
-    <header class="main-header flex space-between align-center full">
-      <div class="main-nav-container flex space-between align-center">
-        <p class="logo header">FUNNY MEMES</p>
-        <nav class="main-nav">
-          <ul class="flex clean-list">
-            <a class="btn btn-navbar btn-primary" onclick="onBackToGallery()">Gallery</a>
-            <a class="btn btn-navbar btn-primary" onclick="onShowSavedMeme()">Saved Mems</a>
-            <a class="about-me btn-navbar btn btn-primary" onclick="OnAboutMe()">About me</a>
-          </ul>
-        </nav>
-      </div>
-      <button class="menu btn-toggle-menu" type="button" onclick="toggleMenu()">&#9776</button>
-    </header>
-    
-    <h1>Meme Generator - sprint 2</h1>
-
-    <button class="btn btn-primary" onclick="onRandomMeme()">
-      Surprise me!
-    </button>
-    
-    <br />
-
-    <!-- Filter memes  -->
-    <input type="filter" class="filter-words" oninput="onFilter(this.value)" />
-    <datalist id="keywords"></datalist>
-
-    <hr />
-    <!-- KEYWORDS not ready -->
-    <!-- <section class="keywords-container"></section> -->
-
-    <!-- GALLERY -->
-    <section class="gallery-layout"></section>
-
-    <!-- SAVED MEMES  -->
-    <section class="saved-memes hidden"></section>
-
-    <!-- EDIT MEMS -->
-    <section class="editor-mems hidden">
-      <div class="editor-layout">
-        <!-- Canvas -->
-        <div class="canvas-container">
-          <canvas id="meme-canvas" width="400" height="400"></canvas>
-        </div>
-
-        <!-- Controls -->
-        <div class="edit-controls">
-
-          <!-- Line controls -->
-          <div class="line-contol">
-            <!-- Text input -->
-            <input
-              id="line-text"
-              type="text"
-              placeholder="Enter text..."
-              oninput="onSetLineTxt(this.value)"
-            />
+    <div class="main-content">
+      <div class="main-screen" onclick="toggleMenu()"></div>
   
-            <div>
-              <button class="btn btn-primary" onclick="onAddLine()">
-                Add line
-                <a class="fa-solid fa-plus"></a>
-              </button>
-              <button class="btn btn-secondary" onclick="onSwitchLine()">
-                Switch line
-              </button>
-              <button
-                class="btn btn-danger"
-                onclick="onRemoveLine()"
-                class="remove"
-              >
-                Remove
-                <a class="fa-solid fa-trash"></a>
-              </button>
-            </div>
-  
-            <!-- Font Style  -->
-            <select
-              name=""
-              class="fontSelect"
-              id="font-select"
-              onchange="onSetFont(this.value)"
-            >
-              <option value="Verdana">Verdana</option>
-              <option value="Arial">Arial</option>
-              <option value="Impact">Impact</option>
-            </select>
-
-          </div>
-
-
-          <div class="tools-section">
-            <!-- Font Size  -->
-            <div>
-              <button class="btn btn-secondary" onclick="onChangeFontSize(2)">
-                A+
-              </button>
-              <button class="btn btn-secondary" onclick="onChangeFontSize(-2)">
-                A-
-              </button>
-            </div>
-            <!-- Smilies for edit  -->
-            <ul class="smilies-edit">
-              <li onclick="onAddSticker('😊')">😊</li>
-              <li onclick="onAddSticker('😂')">😂</li>
-              <li onclick="onAddSticker('😋')">😋</li>
+      <header class="main-header flex space-between align-center full">
+        <div class="main-nav-container flex space-between align-center">
+          <p class="logo header">FUNNY MEMES</p>
+          <nav class="main-nav">
+            <ul class="flex clean-list">
+              <a class="btn btn-navbar btn-primary" onclick="onBackToGallery()">Gallery</a>
+              <a class="btn btn-navbar btn-primary" onclick="onShowSavedMeme()">Saved Mems</a>
+              <a class="about-me btn-navbar btn btn-primary" onclick="OnAboutMe()">About me</a>
             </ul>
-  
-            <!-- Direction Edit  -->
-            <section class="direction-edit">
-              <button>
-                <a
-                  onclick="onMoveText('left')"
-                  class="btn-primary fa-solid fa-left-long"
-                ></a>
-              </button>
-              <button>
-                <a
-                  onclick="onMoveText('right')"
-                  class="btn-primary fa-solid fa-right-long"
-                ></a>
-              </button>
-              <button>
-                <a
-                  onclick="onMoveText('center')"
-                  class="btn-primary fa-solid fa-arrows-to-circle"
-                ></a>
-              </button>
-              <button>
-                <a
-                  onclick="onMoveText('up')"
-                  class="btn-primary fa-solid fa-arrow-up"
-                ></a>
-              </button>
-              <button>
-                <a
-                  onclick="onMoveText('down')"
-                  class="btn-primary fa-solid fa-arrow-down"
-                ></a>
-              </button>
-            </section>
-
-          </div>
-
-          <!-- Color Picker-->
-          <input type="color" id="text-color" onchange="onSetColor(event)" />
-
-          <section class="fotter-edit">
-            <!-- Download -->
-            <a
-              href="#"
-              class="btn-primary"
-              onclick="onDownloadCanvas(this)"
-              download
-              ><i class="fa-solid fa-download"></i>Download</a
-            >
-            <button class="save-meme btn btn-primary" onclick="onSaveMeme()">
-              <i class="fa-solid fa-floppy-disk"></i>Save meme
-            </button>
-            <div class="share-container"></div>
-            <!-- UPLOAD TO Cloudinary -->
-            <form
-              action=""
-              method="POST"
-              enctype="multipart/form-data"
-              onsubmit="onUploadImg(event)"
-            >
-              <input name="img" id="imgData" type="hidden" />
-              <button class="btn btn-primary" type="submit">
-                <i class="fa-solid fa-share-from-square"></i>Upload
-              </button>
-            </form>
-          </section>
-
-          <!-- Upload file from device  -->
-          <input
-            class="btn"
-            type="file"
-            accept="image/*"
-            id="imageInput"
-            onchange="onImgInput(event)"
-          />
+          </nav>
         </div>
-      </div>
-    </section>
+        <button class="menu btn-toggle-menu" type="button" onclick="toggleMenu()">&#9776</button>
+      </header>
+      
+      <h1>Meme Generator - sprint 2</h1>
+  
+      <button class="btn btn-primary" onclick="onRandomMeme()">
+        Surprise me!
+      </button>
+      
+      <br />
+  
+      <!-- Filter memes  -->
+      <input type="filter" class="filter-words" oninput="onFilter(this.value)" />
+      <datalist id="keywords"></datalist>
+  
+      <hr />
+      <!-- KEYWORDS not ready -->
+      <!-- <section class="keywords-container"></section> -->
+  
+      <!-- GALLERY -->
+      <section class="gallery-layout"></section>
+  
+      <!-- SAVED MEMES  -->
+      <section class="saved-memes hidden"></section>
+  
+      <!-- EDIT MEMS -->
+      <section class="editor-mems hidden">
+        <div class="editor-layout">
+          <!-- Canvas -->
+          <div class="canvas-container">
+            <canvas id="meme-canvas" width="400" height="400"></canvas>
+          </div>
+  
+          <!-- Controls -->
+          <div class="edit-controls">
+  
+            <!-- Line controls -->
+            <div class="line-contol">
+              <!-- Text input -->
+              <input
+                id="line-text"
+                type="text"
+                placeholder="Enter text..."
+                oninput="onSetLineTxt(this.value)"
+              />
+    
+              <div>
+                <button class="btn btn-primary" onclick="onAddLine()">
+                  Add line
+                  <a class="fa-solid fa-plus"></a>
+                </button>
+                <button class="btn btn-secondary" onclick="onSwitchLine()">
+                  Switch line
+                </button>
+                <button
+                  class="btn btn-danger"
+                  onclick="onRemoveLine()"
+                  class="remove"
+                >
+                  Remove
+                  <a class="fa-solid fa-trash"></a>
+                </button>
+              </div>
+    
+              <!-- Font Style  -->
+              <select
+                name=""
+                class="fontSelect"
+                id="font-select"
+                onchange="onSetFont(this.value)"
+              >
+                <option value="Verdana">Verdana</option>
+                <option value="Arial">Arial</option>
+                <option value="Impact">Impact</option>
+              </select>
+  
+            </div>
+  
+  
+            <div class="tools-section">
+              <!-- Font Size  -->
+              <div>
+                <button class="btn btn-secondary" onclick="onChangeFontSize(2)">
+                  A+
+                </button>
+                <button class="btn btn-secondary" onclick="onChangeFontSize(-2)">
+                  A-
+                </button>
+              </div>
+              <!-- Smilies for edit  -->
+              <ul class="smilies-edit">
+                <li onclick="onAddSticker('😊')">😊</li>
+                <li onclick="onAddSticker('😂')">😂</li>
+                <li onclick="onAddSticker('😋')">😋</li>
+              </ul>
+    
+              <!-- Direction Edit  -->
+              <section class="direction-edit">
+                <button>
+                  <a
+                    onclick="onMoveText('left')"
+                    class="btn-primary fa-solid fa-left-long"
+                  ></a>
+                </button>
+                <button>
+                  <a
+                    onclick="onMoveText('right')"
+                    class="btn-primary fa-solid fa-right-long"
+                  ></a>
+                </button>
+                <button>
+                  <a
+                    onclick="onMoveText('center')"
+                    class="btn-primary fa-solid fa-arrows-to-circle"
+                  ></a>
+                </button>
+                <button>
+                  <a
+                    onclick="onMoveText('up')"
+                    class="btn-primary fa-solid fa-arrow-up"
+                  ></a>
+                </button>
+                <button>
+                  <a
+                    onclick="onMoveText('down')"
+                    class="btn-primary fa-solid fa-arrow-down"
+                  ></a>
+                </button>
+              </section>
+  
+            </div>
+  
+            <!-- Color Picker-->
+            <input type="color" id="text-color" onchange="onSetColor(event)" />
+  
+            <section class="fotter-edit">
+              <!-- Download -->
+              <a
+                href="#"
+                class="btn-primary"
+                onclick="onDownloadCanvas(this)"
+                download
+                ><i class="fa-solid fa-download"></i>Download</a
+              >
+              <button class="save-meme btn btn-primary" onclick="onSaveMeme()">
+                <i class="fa-solid fa-floppy-disk"></i>Save meme
+              </button>
+              <div class="share-container"></div>
+              <!-- UPLOAD TO Cloudinary -->
+              <form
+                action=""
+                method="POST"
+                enctype="multipart/form-data"
+                onsubmit="onUploadImg(event)"
+              >
+                <input name="img" id="imgData" type="hidden" />
+                <button class="btn btn-primary" type="submit">
+                  <i class="fa-solid fa-share-from-square"></i>Upload
+                </button>
+              </form>
+            </section>
+  
+            <!-- Upload file from device  -->
+            <input
+              class="btn"
+              type="file"
+              accept="image/*"
+              id="imageInput"
+              onchange="onImgInput(event)"
+            />
+          </div>
+        </div>
+      </section>
+
+    </div>
+
 
     <footer class="full main-footer flex space-between align-center">
       <h3 class="logo">Funny Memes</h3>

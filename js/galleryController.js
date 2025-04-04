@@ -11,8 +11,6 @@ function renderGallery() {
         `
   })
   elGallery.innerHTML = strHTMLs.join("")
-
-  document.querySelector(".saved-memes").classList.add("hidden")
 }
 
 function onImgSelect(imgId) {
