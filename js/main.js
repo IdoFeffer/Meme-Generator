@@ -234,7 +234,7 @@ function toggleMenu() {
   hamburgerButton.classList.toggle('open');
 }
 
-// TODO 
+// TODO
 function dropdowntoggle() {
   document.querySelectorAll(".dropdown-toggle");
 }

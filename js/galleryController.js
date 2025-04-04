@@ -42,11 +42,16 @@ function onShowSavedMeme() {
 }
 
 function onFilter(value) {
+  if (!value) {
+    renderGallery()
+    return
+  }
+
   const imgs = getImgs()
   const filteredImgs = value
-  ? imgs.filter((img) => img.keywords.includes(value))
-  : imgs
-  
+    ? imgs.filter((img) => img.keywords.includes(value))
+    : imgs
+
   const strHTMLs = filteredImgs.map((img, idx) => {
     const imgUrl = getImgById(img.id)
     return `
@@ -55,4 +60,5 @@ function onFilter(value) {
   })
   const elGallery = document.querySelector(".gallery-layout")
   elGallery.innerHTML = strHTMLs.join("")
+
 }
