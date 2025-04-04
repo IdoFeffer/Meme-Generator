@@ -71,9 +71,8 @@ function getImgs() {
 }
 
 function getImgById(id) {
-  if (id === 1) return img.url
   const img = gImgs.find((img) => img.id === id)
-  if (!img) return
+  if (!img) return ``
   return img.url
 }
 

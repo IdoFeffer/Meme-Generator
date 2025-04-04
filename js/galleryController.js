@@ -21,24 +21,27 @@ function onImgSelect(imgId) {
 
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.remove("hidden")
+  // document.querySelector(".filter-words").classList.add("hidden")
+  
 }
 
 function onShowSavedMeme() {
   const savedMems = loadFromStorage("savedMemes") || []
   const elSaved = document.querySelector(".saved-memes")
-
+  
   const strHTMLs = savedMems.map((meme, idx) => {
     const imgUrl = getImgById(meme.selectedImgId)
     return `
-      <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
+    <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
     `
   })
-
+  
   elSaved.innerHTML = strHTMLs.join("")
   elSaved.classList.remove("hidden")
-
+  
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.add("hidden")
+  document.querySelector(".filter-words").classList.add("block")
 }
 
 function onFilter(value) {
@@ -46,13 +49,14 @@ function onFilter(value) {
     renderGallery()
     return
   }
-
   const imgs = getImgs()
-  const filteredImgs = value
-    ? imgs.filter((img) => img.keywords.includes(value))
-    : imgs
+  const filteredImgs = imgs.filter((img) =>
+    img.keywords.some((keyword) =>
+      keyword.toLowerCase().includes(value.toLowerCase())
+    )
+  )
 
-  const strHTMLs = filteredImgs.map((img, idx) => {
+  const strHTMLs = filteredImgs.map((img) => {
     const imgUrl = getImgById(img.id)
     return `
             <img src="${imgUrl}" onclick="onImgSelect(${img.id})" />
@@ -60,5 +64,4 @@ function onFilter(value) {
   })
   const elGallery = document.querySelector(".gallery-layout")
   elGallery.innerHTML = strHTMLs.join("")
-
 }

@@ -96,6 +96,30 @@
     display: flex;
     padding: 10px;
   }
+
+  .editor-mems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  .canvas-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  canvas {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+  }
+  .btn {
+    padding: 0.5rem;
+}
+.btn-navbar {
+  padding: 1.5rem;
+}
 }
 
 /* MEDIUM  */

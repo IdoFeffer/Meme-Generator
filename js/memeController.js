@@ -32,6 +32,8 @@ function renderMeme() {
       }
     })
   }
+  document.querySelector(".filter-words").classList.add("hidden")
+
 }
 
 // MEME TEXT EDIT
