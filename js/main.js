@@ -217,36 +217,24 @@ function onRandomMeme() {
   renderMeme()
 }
 
-// function onKeywords() {
-//   const elKeywords = document.querySelector(".keywords-container")
-//   const strHTMLs = Object.entries(keywords).map(([word, count]) => {
-//     return `
-//     <span onclick="onKeywordClick('${word}')"
-//           style='font-size: ${count + 12}px'>${word}
-//     </span>
-//     `
-//   })
-//   elKeywords.innerHTML = strHTMLs.join("")
-//   // document.querySelector(".keywords-container").classList.add("block")
+// TODO
+// function onKeywordClick(word){
+//   keywords[word]++
+
+//   const filterImg = getImgs().filter(img.keywords.includes(word))
+//   renderGallery()
+//   if (!keywords[word]) keywords[word] = 1
+//   else keywords[word]++
 // }
 
-function onKeywordClick(word){
-  keywords[word]++
-
-  const filterImg = getImgs().filter(img.keywords.includes(word))
-  renderGallery()
-  if (!keywords[word]) keywords[word] = 1
-  else keywords[word]++
-}
-
 function toggleMenu() {
-  document.body.classList.toggle("menu-open")
+  document.body.classList.toggle("menu-open");
+
+  const hamburgerButton = document.querySelector('.menu');
+  hamburgerButton.classList.toggle('open');
 }
 
-function toggleModal() {
-  document.querySelector(".modal").classList.toggle("hidden")
-}
-
+// TODO 
 function dropdowntoggle() {
-  document.querySelectorAll(".dropdown-toggle")
+  document.querySelectorAll(".dropdown-toggle");
 }

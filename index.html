@@ -13,27 +13,29 @@
 
   <body onload="onInit()" class="main-layout grid">
 
+    <div class="main-screen" onclick="toggleMenu()"></div>
+
     <header class="main-header flex space-between align-center full">
       <div class="main-nav-container flex space-between align-center">
         <p class="logo header">FUNNY MEMES</p>
         <nav class="main-nav">
           <ul class="flex clean-list">
-            <button class="btn btn-primary" onclick="onBackToGallery()">Gallery</button>
-            <button class="btn btn-primary" onclick="onShowSavedMeme()">
+            <a class="btn btn-primary" onclick="onBackToGallery()">Gallery</a>
+            <a class="btn btn-primary" onclick="onShowSavedMeme()">
               Saved Mems
-            </button>
-        
+            </a>
           </ul>
         </nav>
-        <button class="menu" type="button" onclick="toggleMenu()">&#9776</button>
       </div>
+      <button class="menu btn-toggle-menu" type="button" onclick="toggleMenu()">&#9776</button>
     </header>
-
+    
     <h1>Meme Generator - sprint 2</h1>
 
     <button class="btn btn-primary" onclick="onRandomMeme()">
       Surprise me!
     </button>
+    
     <br />
 
     <!-- Filter memes  -->
