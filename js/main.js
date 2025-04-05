@@ -176,7 +176,7 @@ function getLineClickedIdx(pos) {
   }
   return -1
 }
-
+  
 function onSetFont(font) {
   gMeme.lines[gMeme.selectedLineIdx].font = font
   renderMeme()
