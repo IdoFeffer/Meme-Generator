@@ -41,6 +41,8 @@ function onBackToGallery() {
 
   document.querySelector(".editor-mems").classList.add("hidden")
   document.querySelector(".saved-memes").classList.add("hidden")
+  document.querySelector(".filter-words").classList.remove("hidden")
+
 }
 
 // Canvas clicks
@@ -233,7 +235,3 @@ function toggleMenu() {
   hamburgerButton.classList.toggle("open")
 }
 
-// TODO
-function dropdowntoggle() {
-  document.querySelectorAll(".dropdown-toggle")
-}

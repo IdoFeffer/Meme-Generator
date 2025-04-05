@@ -55,3 +55,6 @@
   cursor: pointer;
 }
 
+.color-picker{
+  place-self: center;
+}
