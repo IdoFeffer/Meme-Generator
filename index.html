@@ -31,9 +31,12 @@
       
       <h1>Meme Generator - sprint 2</h1>
   
-      <button class="btn btn-primary" onclick="onRandomMeme()">
-        Surprise me!
-      </button>
+      <div class="surprise">
+        <button class="btn btn-primary surprise" onclick="onRandomMeme()">
+          Surprise me!
+        </div>
+
+      </section>
       
       <br />
   
@@ -42,8 +45,6 @@
       <datalist id="keywords"></datalist>
   
       <hr />
-      <!-- KEYWORDS not ready -->
-      <!-- <section class="keywords-container"></section> -->
   
       <!-- GALLERY -->
       <section class="gallery-layout"></section>
@@ -121,10 +122,7 @@
                 <li onclick="onAddSticker('😂')">😂</li>
                 <li onclick="onAddSticker('😋')">😋</li>
               </ul>
-    
-              
-              <button onclick="onRotateLine('rotate-left')">⟲</button>
-              <button onclick="onRotateLine('rotate-right')">⟳</button>
+                 
               <!-- Direction Edit  -->
               <section class="direction-edit">
 
@@ -192,7 +190,7 @@
               </form>              
             </section>
             <button class="btn btn-primary share-meme" onclick="onShareMeme()">
-            <i class="fa-solid fa-share-nodes"></i>Share Meme</button>
+            <i class="fa-solid fa-share-nodes"></i> Share Meme</button>
             
             <!-- Upload file from device  -->
             <input

@@ -11,6 +11,7 @@ function renderGallery() {
         `
   })
   elGallery.innerHTML = strHTMLs.join("")
+  document.querySelector('#filter').classList.remove('hidden')
 }
 
 function onImgSelect(imgId) {
@@ -39,7 +40,7 @@ function onShowSavedMeme() {
   
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.add("hidden")
-  document.querySelector(".filter-words").classList.add("block")
+  // document.querySelector(".filter-words").classList.add("block")
 }
 
 function onFilter(value) {

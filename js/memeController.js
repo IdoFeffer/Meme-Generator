@@ -33,7 +33,7 @@ function renderMeme() {
       }
     })
   }
-  document.querySelector(".filter-words").classList.add("hidden")
+  // document.querySelector(".filter-words").classList.add("hidden")
 }
 
 // MEME TEXT EDIT
@@ -158,8 +158,6 @@ function onShareMeme() {
         text: "I made this meme using Funny Memes 🤣",
         files: [file],
       })
-        .then(() => console.log("✅ Shared successfully"))
-        .catch((err) => console.error("❌ Sharing failed", err))
     } else {
       alert("Sharing not supported on this device.")
     }
