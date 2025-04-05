@@ -12,22 +12,23 @@
   </head>
 
   <body onload="onInit()" class="main-layout grid">
+    <div class="main-screen" onclick="toggleMenu()"></div>
+    <!-- <div class="main-content"> -->
+
+    <header class="main-header flex space-between align-center full">
+      <div class="main-nav-container flex space-between align-center">
+        <p class="logo header">FUNNY MEMES</p>
+        <nav class="main-nav">
+          <ul class="flex clean-list">
+            <a class="btn btn-navbar btn-primary" onclick="onBackToGallery()">Gallery</a>
+            <a class="btn btn-navbar btn-primary" onclick="onShowSavedMeme()">Saved Mems</a>
+            <a class="about-me btn-navbar btn btn-primary" onclick="OnAboutMe()">About me</a>
+          </ul>
+        </nav>
+      </div>
+      <button class="menu btn-toggle-menu" type="button" onclick="toggleMenu()">&#9776</button>
+    </header>
     <div class="main-content">
-      <div class="main-screen" onclick="toggleMenu()"></div>
-  
-      <header class="main-header flex space-between align-center full">
-        <div class="main-nav-container flex space-between align-center">
-          <p class="logo header">FUNNY MEMES</p>
-          <nav class="main-nav">
-            <ul class="flex clean-list">
-              <a class="btn btn-navbar btn-primary" onclick="onBackToGallery()">Gallery</a>
-              <a class="btn btn-navbar btn-primary" onclick="onShowSavedMeme()">Saved Mems</a>
-              <a class="about-me btn-navbar btn btn-primary" onclick="OnAboutMe()">About me</a>
-            </ul>
-          </nav>
-        </div>
-        <button class="menu btn-toggle-menu" type="button" onclick="toggleMenu()">&#9776</button>
-      </header>
       
       <h1>Meme Generator - sprint 2</h1>
   
@@ -41,7 +42,7 @@
       <br />
   
       <!-- Filter memes  -->
-      <input type="filter" class="filter-words" oninput="onFilter(this.value)" />
+      <input type="filter" class="filter-words" oninput="onFilter(this.value)" placeholder="Search memes..." />
       <datalist id="keywords"></datalist>
   
       <hr />

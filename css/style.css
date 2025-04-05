@@ -1,7 +1,6 @@
 /* BASIC  */
 @import url("basic/base.css");
 @import url("basic/layout.css");
-@import url("setup/var.css");
 
 
 /* COMPONENTS  */
@@ -10,6 +9,11 @@
 @import url("components/editor.css");
 @import url("components/main-footer.css");
 @import url("components/main-header.css");
+
+/* SETUP  */
+@import url("setup/typography.css");
+@import url("setup/var.css");
+
 
 /* MEDIA QUERIES */
 @import url("setup/mq.css");

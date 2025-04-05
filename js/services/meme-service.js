@@ -67,7 +67,8 @@ function getMeme() {
 }
 
 function getImgs() {
-  return gImgs
+  // return gImgs
+  return [...gImgs, ...gUploadedImgs]
 }
 
 function getImgById(id) {
@@ -96,7 +97,7 @@ function changeFontSize(diff) {
   gMeme.lines[gMeme.selectedLineIdx].size += diff
 }
 
-// ADD LINE 
+// ADD LINE
 function addLine() {
   const newLine = {
     txt: "New line",
@@ -110,10 +111,37 @@ function addLine() {
   gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
-// SWITCH LINE 
+// SWITCH LINE
 function switchLine() {
   var currIdx = gMeme.selectedLineIdx
 
   var nextIdx = (currIdx + 1) % gMeme.lines.length
   gMeme.selectedLineIdx = nextIdx
+}
+
+// TODO
+function renderSavedMemes() {
+  const savedMems = loadFromStorage("savedMems") || []
+  const elSaved = document.querySelector(".saved-memes")
+
+  const strHTMLs = savedMems.map((meme, idx) => {
+    const imgUrl = meme.imgUrl || getImgById(meme.selectedImgId)
+    if (!imgUrl) return ""
+
+    return `
+      <div class="saved-meme-preview">
+        <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
+        <button class="deleted-btn" onclick="onDeleteMeme(${idx})">🗑️ Delete</button>
+      </div>
+    `
+  })
+
+  elSaved.innerHTML = strHTMLs.join("")
+}
+
+function onDeleteMeme(idx) {
+  const savedMems = loadFromStorage("savedMems") || []
+  savedMems.splice(idx, 1)
+  saveToStorage("savedMems", savedMems)
+  renderSavedMemes()
 }

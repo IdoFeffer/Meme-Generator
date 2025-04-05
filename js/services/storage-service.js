@@ -52,6 +52,7 @@ function onShowSavedMeme() {
     } 
     return `
       <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
+      <button onclick="onDeleteMeme(${idx})">Delete meme</button>
     `
   })
   
@@ -61,6 +62,14 @@ function onShowSavedMeme() {
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.add("hidden")
 }
+
+// function onShowSavedMeme() {
+//   renderSavedMemes()
+//   document.querySelector(".saved-memes").classList.remove("hidden")
+//   document.querySelector(".gallery-layout").classList.add("hidden")
+//   document.querySelector(".editor-mems").classList.add("hidden")
+// }
+
 
 function onLoadSavedMeme(idx) {
   const savedMems = loadFromStorage("savedMemes") || []

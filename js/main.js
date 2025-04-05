@@ -37,8 +37,10 @@ function onSetColor(ev) {
 }
 
 function onBackToGallery() {
-  document.querySelector(".editor-mems").classList.add("hidden")
   document.querySelector(".gallery-layout").classList.remove("hidden")
+
+  document.querySelector(".editor-mems").classList.add("hidden")
+  document.querySelector(".saved-memes").classList.add("hidden")
 }
 
 // Canvas clicks
@@ -61,7 +63,7 @@ function onCanvasClick(ev) {
     const yStart = line.pos.y - textHeight + 10
     const yEnd = line.pos.y
 
-      if (x >= xStart && x <= xEnd && y >= yStart && y <= yEnd) {
+    if (x >= xStart && x <= xEnd && y >= yStart && y <= yEnd) {
       meme.selectedLineIdx = idx
       renderMeme()
 
@@ -111,7 +113,6 @@ function onDown(ev) {
   const pos = getEvPos(ev)
   gElCanvas.style.cursor = "grabbing"
 
-
   if (ev.type === "mousedown") ev.preventDefault()
 
   const lineIdx = getLineClickedIdx(pos)
@@ -124,7 +125,6 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
-
   const line = gMeme.lines[gMeme.selectedLineIdx]
   if (!line.isDrag) return
 
@@ -140,7 +140,6 @@ function onMove(ev) {
 }
 
 function onUp() {
-  
   gIsMouseDown = false
 
   const line = gMeme.lines[gMeme.selectedLineIdx]
@@ -228,13 +227,13 @@ function onRandomMeme() {
 // }
 
 function toggleMenu() {
-  document.body.classList.toggle("menu-open");
+  document.body.classList.toggle("menu-open")
 
-  const hamburgerButton = document.querySelector('.menu');
-  hamburgerButton.classList.toggle('open');
+  const hamburgerButton = document.querySelector(".menu")
+  hamburgerButton.classList.toggle("open")
 }
 
 // TODO
 function dropdowntoggle() {
-  document.querySelectorAll(".dropdown-toggle");
+  document.querySelectorAll(".dropdown-toggle")
 }

@@ -6,12 +6,12 @@ function renderGallery() {
 
   const strHTMLs = imgs.map((img) => {
     return `
-        <img src="${img.url}"
-        onclick="onImgSelect(${img.id})"/>
+        <img src="${img.url}"onclick="onImgSelect(${img.id})"/>
         `
   })
   elGallery.innerHTML = strHTMLs.join("")
-  document.querySelector('#filter').classList.remove('hidden')
+
+  // document.querySelector('#filter').classList.remove('hidden')
 }
 
 function onImgSelect(imgId) {
@@ -21,7 +21,6 @@ function onImgSelect(imgId) {
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.remove("hidden")
   // document.querySelector(".filter-words").classList.add("hidden")
-  
 }
 
 function onShowSavedMeme() {

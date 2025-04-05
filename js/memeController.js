@@ -1,6 +1,8 @@
 "use strict"
 var selectedImage = null
 var gCtx
+var gUploadedImgs = []
+
 
 function renderMeme() {
   const meme = getMeme()
@@ -107,11 +109,22 @@ function onImgInput(ev) {
       // gMeme.selectedImgId = -1
       // gMeme.imgUrl = img.src
       // drawImgOnCanvas(img)
+
+      // const newImg = {
+      //   id: gImgs.length + 1,
+      //   url: img.src,
+      //   keywords: ["uploaded"],
+      // }
+
       const newImg = {
-        id: gImgs.length + 1,
+        id: gImgs.length + gUploadedImgs.length + 1,
         url: img.src,
-        keywords: ["uploaded"],
+        keywords: ['uploaded']
       }
+      gUploadedImgs.push(newImg)
+      gMeme.selectedImgId = newImg.id
+
+
       gImgs.push(newImg)
       saveToStorage(gImgs)
       gMeme.selectedImgId = newImg.id
@@ -146,7 +159,7 @@ function drawImgOnCanvas(img) {
   )
 }
 
-
+// Share meme 
 function onShareMeme() {
   const canvas = document.getElementById("meme-canvas")
   canvas.toBlob((blob) => {
@@ -163,3 +176,12 @@ function onShareMeme() {
     }
   }, "image/jpeg")
 }
+
+function onDeleteMeme(idx){
+  const savedMemes = loadFromStorage('savedMemes') || []
+  savedMemes.splice(idx, 1)
+  saveToStorage('savedMemes', savedMemes)
+  onShowSavedMeme()
+}
+
+////////////////////////////////////////////////

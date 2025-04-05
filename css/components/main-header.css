@@ -31,6 +31,10 @@
   margin-right: auto;
 }
 
+.logo {
+  font-family: hako;
+}
+
 .main-nav {
   flex-grow: 1;
   text-align: center;
