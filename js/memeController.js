@@ -5,6 +5,7 @@ var gCtx
 function renderMeme() {
   const meme = getMeme()
   const img = new Image()
+
   img.src =
     meme.selectedImgId === -1 ? meme.imgUrl : getImgById(meme.selectedImgId)
   img.onload = () => {
@@ -109,7 +110,7 @@ function onImgInput(ev) {
       const newImg = {
         id: gImgs.length + 1,
         url: img.src,
-        keywords: ['uploaded']
+        keywords: ["uploaded"],
       }
       gImgs.push(newImg)
       saveToStorage(gImgs)
@@ -143,4 +144,24 @@ function drawImgOnCanvas(img) {
     img.width * ratio,
     img.height * ratio
   )
+}
+
+
+function onShareMeme() {
+  const canvas = document.getElementById("meme-canvas")
+  canvas.toBlob((blob) => {
+    const file = new File([blob], "my-meme.jpg", { type: "image/jpeg" })
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      navigator.share({
+        title: "Check out my meme!",
+        text: "I made this meme using Funny Memes 🤣",
+        files: [file],
+      })
+        .then(() => console.log("✅ Shared successfully"))
+        .catch((err) => console.error("❌ Sharing failed", err))
+    } else {
+      alert("Sharing not supported on this device.")
+    }
+  }, "image/jpeg")
 }

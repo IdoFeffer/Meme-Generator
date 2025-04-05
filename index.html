@@ -122,8 +122,12 @@
                 <li onclick="onAddSticker('😋')">😋</li>
               </ul>
     
+              
+              <button onclick="onRotateLine('rotate-left')">⟲</button>
+              <button onclick="onRotateLine('rotate-right')">⟳</button>
               <!-- Direction Edit  -->
               <section class="direction-edit">
+
                 <button>
                   <a
                     onclick="onMoveText('left')"
@@ -185,9 +189,11 @@
                 <button class="btn btn-primary" type="submit">
                   <i class="fa-solid fa-share-from-square"></i>Upload
                 </button>
-              </form>
+              </form>              
             </section>
-  
+            <button class="btn btn-primary share-meme" onclick="onShareMeme()">
+            <i class="fa-solid fa-share-nodes"></i>Share Meme</button>
+            
             <!-- Upload file from device  -->
             <input
               class="btn"
