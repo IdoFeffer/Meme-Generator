@@ -76,7 +76,7 @@
                 placeholder="Enter text..."
                 oninput="onSetLineTxt(this.value)"
               />
-    
+
               <div>
                 <button class="btn btn-secondary" onclick="onSwitchLine()">
                   <a class="fa-solid fa-repeat"></a>
@@ -92,24 +92,24 @@
                 >
                   <a class="fa-solid fa-trash"></a>
                 </button>
-              </div>
-    
+              </div>   
+
+            </div>
+            
+            <div class="tools-section">
               <!-- Font Style  -->
               <select
-                name=""
-                class="fontSelect"
-                id="font-select"
-                onchange="onSetFont(this.value)"
+              name=""
+              class="fontSelect"
+              id="font-select"
+              onchange="onSetFont(this.value)"
               >
-                <option value="Verdana">Verdana</option>
-                <option value="Arial">Arial</option>
-                <option value="Impact">Impact</option>
-              </select>
-  
-            </div>
-  
-            <div class="tools-section">
-              <!-- Font Size  -->
+              <option value="Verdana">Verdana</option>
+              <option value="Arial">Arial</option>
+              <option value="Impact">Impact</option>
+            </select>
+            
+            <!-- Font Size  -->
               <div>
                 <button class="btn btn-secondary" onclick="onChangeFontSize(2)">
                   A+
@@ -158,6 +158,7 @@
               <input type="color" id="text-color" class="color-picker" onchange="onSetColor(event)" />
               
             </div>
+            
             <!-- Smilies for edit  -->
             <ul class="smilies-edit">
               <li onclick="onAddSticker('😊')">😊</li>

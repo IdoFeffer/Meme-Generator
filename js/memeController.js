@@ -34,7 +34,7 @@ function renderMeme() {
       }
     })
   }
-  // document.querySelector(".filter-words").classList.add("hidden")
+  document.querySelector(".filter-words").classList.add("hidden")
 }
 
 // MEME TEXT EDIT
@@ -176,6 +176,7 @@ function onShareMeme() {
   }, "image/jpeg")
 }
 
+// TODO 
 function onDeleteMeme(idx){
   const savedMemes = loadFromStorage('savedMemes') || []
   savedMemes.splice(idx, 1)
@@ -183,4 +184,3 @@ function onDeleteMeme(idx){
   onShowSavedMeme()
 }
 
-////////////////////////////////////////////////
