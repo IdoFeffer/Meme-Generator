@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Funny Memes - Meme Generator
 
 Welcome to the **Funny Memes** generator! This is a meme generator app using vanilla JavaScript, HTML, and CSS.
@@ -43,3 +44,6 @@ Welcome to the **Funny Memes** generator! This is a meme generator app using van
 ---
 Happy memeing!
 
+=======
+Welcome to my Meme Generatot
+>>>>>>> bd7396e6d819dea670984ebaac419e632956f6fd
