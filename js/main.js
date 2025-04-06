@@ -1,4 +1,5 @@
 "use strict"
+
 let gLastPos
 var gIsMouseDown = false
 var gElCanvas = document.getElementById("meme-canvas")

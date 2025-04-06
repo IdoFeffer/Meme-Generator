@@ -1,7 +1,6 @@
 "use strict"
 var selectedImage = null
 var gCtx
-var gUploadedImgs = []
 
 
 function renderMeme() {

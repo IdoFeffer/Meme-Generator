@@ -67,8 +67,7 @@ function getMeme() {
 }
 
 function getImgs() {
-  // return gImgs
-  return [...gImgs, ...gUploadedImgs]
+  return gImgs
 }
 
 function getImgById(id) {
