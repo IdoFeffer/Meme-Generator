@@ -34,9 +34,9 @@ function renderMeme() {
       }
     })
   }
-  document.querySelector(".filter-words").classList.remove("hidden")
+  document.querySelector(".filter-words").classList.add("hidden")
   document.querySelector(".btn-clear").classList.add("hidden")
-  document.querySelector(".btn-clear").classList.remove("hidden")
+  // document.querySelector(".btn-clear").classList.remove("hidden")
 
 }
 
