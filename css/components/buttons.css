@@ -85,6 +85,9 @@ button {
   justify-content: center;
   gap: 10px;
   list-style-type: none;
+  margin: 0 auto;
+  font-size: 20px;
+
 }
 
 .line-contol {

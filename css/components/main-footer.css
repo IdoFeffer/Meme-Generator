@@ -4,9 +4,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 1rem; 
+  gap: 1rem;
   font-size: 30px;
-
+  border-radius: 10px;
 }
 
 /* Main Footer  */
@@ -21,7 +21,7 @@
 
   text-align: center;
   padding: 2rem;
-  background-color:slategrey
+  background-color: slategrey;
 }
 
 .main-footer a {
@@ -30,6 +30,4 @@
   display: grid;
   place-items: center;
   text-decoration: none;
-
 }
-

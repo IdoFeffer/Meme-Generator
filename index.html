@@ -18,8 +18,10 @@
 
     <header class="main-header flex space-between align-center full">
       <div class="main-nav-container flex space-between align-center">
-        <img src="img/logo.png" class="logo header" alt="">
+      
+        <img src="img/logo.png" class="logo header" alt="" >
         <!-- <p class="logo header">FUNNY MEMES</p> -->
+
         <nav class="main-nav">
           <ul class="flex clean-list">
             <a class="btn btn-navbar btn-primary" onclick="onBackToGallery()">Gallery</a>
@@ -38,9 +40,7 @@
       <div class="surprise">
         <button class="btn btn-primary surprise" onclick="onRandomMeme()">
           Surprise me!
-        </div>
-
-      </section>
+      </div>
       
       <br />
   
@@ -78,19 +78,18 @@
               />
     
               <div>
-                <button class="btn btn-primary" onclick="onAddLine()">
-                  Add line
-                  <a class="fa-solid fa-plus"></a>
-                </button>
                 <button class="btn btn-secondary" onclick="onSwitchLine()">
-                  Switch line
+                  <a class="fa-solid fa-repeat"></a>
+                </button>
+                <button class="btn btn-primary" onclick="onAddLine()">
+                  
+                  <a class="fa-solid fa-plus"></a>
                 </button>
                 <button
                   class="btn btn-danger"
                   onclick="onRemoveLine()"
                   class="remove"
                 >
-                  Remove
                   <a class="fa-solid fa-trash"></a>
                 </button>
               </div>
@@ -109,63 +108,62 @@
   
             </div>
   
-  
             <div class="tools-section">
               <!-- Font Size  -->
               <div>
                 <button class="btn btn-secondary" onclick="onChangeFontSize(2)">
                   A+
                 </button>
+
                 <button class="btn btn-secondary" onclick="onChangeFontSize(-2)">
                   A-
                 </button>
-              </div>
-              <!-- Smilies for edit  -->
-              <ul class="smilies-edit">
-                <li onclick="onAddSticker('😊')">😊</li>
-                <li onclick="onAddSticker('😂')">😂</li>
-                <li onclick="onAddSticker('😋')">😋</li>
-              </ul>
-                 
-              <!-- Direction Edit  -->
-              <section class="direction-edit">
 
-                <button>
-                  <a
-                    onclick="onMoveText('left')"
-                    class="btn-primary fa-solid fa-left-long"
-                  ></a>
-                </button>
-                <button>
-                  <a
-                    onclick="onMoveText('right')"
-                    class="btn-primary fa-solid fa-right-long"
-                  ></a>
-                </button>
-                <button>
-                  <a
-                    onclick="onMoveText('center')"
-                    class="btn-primary fa-solid fa-arrows-to-circle"
-                  ></a>
-                </button>
-                <button>
-                  <a
-                    onclick="onMoveText('up')"
-                    class="btn-primary fa-solid fa-arrow-up"
-                  ></a>
-                </button>
-                <button>
-                  <a
-                    onclick="onMoveText('down')"
-                    class="btn-primary fa-solid fa-arrow-down"
-                  ></a>
-                </button>
-              </section>
-  
+                <!-- Direction Edit  -->
+                 <section class="direction-edit">
+                  <button>
+                    <a
+                      onclick="onMoveText('left')"
+                      class="btn-primary fa-solid fa-left-long"
+                    ></a>
+                  </button>
+                  <button>
+                    <a
+                      onclick="onMoveText('right')"
+                      class="btn-primary fa-solid fa-right-long"
+                    ></a>
+                  </button>
+                  <button>
+                    <a
+                      onclick="onMoveText('center')"
+                      class="btn-primary fa-solid fa-arrows-to-circle"
+                    ></a>
+                  </button>
+                  <!-- <button>
+                    <a
+                      onclick="onMoveText('up')"
+                      class="btn-primary fa-solid fa-arrow-up"
+                    ></a>
+                  </button>
+                  <button>
+                    <a
+                      onclick="onMoveText('down')"
+                      class="btn-primary fa-solid fa-arrow-down"
+                    ></a>
+                  </button> -->
+                </section> 
+              </div>
+            
+              <!-- Color Picker-->
+              <input type="color" id="text-color" class="color-picker" onchange="onSetColor(event)" />
+              
             </div>
-  
-            <!-- Color Picker-->
-            <input type="color" id="text-color" class="color-picker" onchange="onSetColor(event)" />
+            <!-- Smilies for edit  -->
+            <ul class="smilies-edit">
+              <li onclick="onAddSticker('😊')">😊</li>
+              <li onclick="onAddSticker('😂')">😂</li>
+              <li onclick="onAddSticker('😋')">😋</li>
+            </ul>
   
             <section class="fotter-edit">
               <!-- Download -->
@@ -174,14 +172,18 @@
                 class="btn-primary"
                 onclick="onDownloadCanvas(this)"
                 download
-                ><i class="fa-solid fa-download"></i>Download</a
+                ><i class="btn btn-primary fa-solid fa-download"></i></a
               >
               <button class="save-meme btn btn-primary" onclick="onSaveMeme()">
-                <i class="fa-solid fa-floppy-disk"></i>Save meme
+                <i class="fa-solid fa-floppy-disk"></i>
               </button>
+              <button class="btn btn-primary share-meme" onclick="onShareMeme()">
+                <i class="fa-solid fa-share-nodes"></i>
+                </button>
+    
               <div class="share-container"></div>
               <!-- UPLOAD TO Cloudinary -->
-              <form
+              <!-- <form
                 action=""
                 method="POST"
                 enctype="multipart/form-data"
@@ -189,21 +191,19 @@
               >
                 <input name="img" id="imgData" type="hidden" />
                 <button class="btn btn-primary" type="submit">
-                  <i class="fa-solid fa-share-from-square"></i>Upload
+                  <i class="fa-solid fa-share-from-square"></i>
                 </button>
-              </form>              
+              </form>               -->
             </section>
-            <button class="btn btn-primary share-meme" onclick="onShareMeme()">
-            <i class="fa-solid fa-share-nodes"></i> Share Meme</button>
             
             <!-- Upload file from device  -->
-            <input
+            <!-- <input
               class="btn"
               type="file"
               accept="image/*"
               id="imageInput"
               onchange="onImgInput(event)"
-            />
+            /> -->
           </div>
         </div>
       </section>
