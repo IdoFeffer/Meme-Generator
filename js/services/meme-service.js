@@ -55,12 +55,7 @@ const userService = {
   get,
 }
 
-const keywords = {
-  funny: 12,
-  baby: 5,
-  cat: 3,
-  dog: 8,
-}
+
 
 function getMeme() {
   return gMeme

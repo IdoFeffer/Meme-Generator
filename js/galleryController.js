@@ -11,6 +11,8 @@ function renderGallery() {
   })
   elGallery.innerHTML = strHTMLs.join("")
 
+  document.querySelector(".filter-words").classList.remove("hidden")
+  document.querySelector(".keywords-container").classList.remove("hidden")
 }
 
 function onImgSelect(imgId) {
@@ -18,8 +20,9 @@ function onImgSelect(imgId) {
   renderMeme()
 
   document.querySelector(".gallery-layout").classList.add("hidden")
+  document.querySelector(".keywords-container").classList.add("hidden")
   document.querySelector(".editor-mems").classList.remove("hidden")
-  // document.querySelector(".filter-words").classList.add("hidden")
+  // document.querySelector(".filter-words").classList.remove("hidden")
 }
 
 function onShowSavedMeme() {
@@ -42,6 +45,8 @@ function onShowSavedMeme() {
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.add("hidden")
   document.querySelector(".filter-words").classList.add("hidden")
+  document.querySelector(".keywords-container").classList.add("hidden")
+
 }
 
 function onFilter(value) {

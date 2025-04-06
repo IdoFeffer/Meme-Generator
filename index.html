@@ -11,6 +11,7 @@
       src="https://kit.fontawesome.com/731169d875.js"
       crossorigin="anonymous"
     ></script>
+
   </head>
 
   <body onload="onInit()" class="main-layout grid">
@@ -45,9 +46,11 @@
       <br />
   
       <!-- Filter memes  -->
-      <input type="filter" class="filter-words" oninput="onFilter(this.value)" placeholder="Search memes..." />
-      <datalist id="keywords"></datalist>
-  
+       <div class="filters">
+         <input type="filter" class="filter-words" oninput="onFilter(this.value)" placeholder="Search memes..." />
+         <div class="keywords-container"></div>
+        </div>
+
       <hr />
   
       <!-- GALLERY -->
@@ -96,8 +99,11 @@
 
             </div>
             
-            <div class="tools-section">
-              <!-- Font Style  -->
+            <div class="tools-section2">
+              <!-- Font Family  -->
+                             <!-- Color Picker-->
+              <input type="color" id="text-color" class="color-picker" onchange="onSetColor(event)" />
+
               <select
               name=""
               class="fontSelect"
@@ -157,10 +163,7 @@
                   </button> -->
                 </section> 
               </div>
-            
-              <!-- Color Picker-->
-              <input type="color" id="text-color" class="color-picker" onchange="onSetColor(event)" />
-              
+                          
             </div>
             
             <!-- Smilies for edit  -->
@@ -182,6 +185,7 @@
               <button class="save-meme btn btn-primary" onclick="onSaveMeme()">
                 <i class="fa-solid fa-floppy-disk"></i>
               </button>
+              
               <button class="btn btn-primary share-meme" onclick="onShareMeme()">
                 <i class="fa-solid fa-share-nodes"></i>
                 </button>

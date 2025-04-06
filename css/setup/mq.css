@@ -38,6 +38,7 @@
     color: black;
     border-inline-start: 1px solid #ccc;
 
+    z-index: 10;
     transform: translateX(100%);
   }
 

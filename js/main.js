@@ -4,6 +4,13 @@ let gLastPos
 var gIsMouseDown = false
 var gElCanvas = document.getElementById("meme-canvas")
 
+const keywords = {
+  funny: 12,
+  baby: 5,
+  cat: 3,
+  dog: 8,
+}
+
 function onInit() {
   gElCanvas = document.getElementById("meme-canvas")
   gCtx = gElCanvas.getContext("2d")
@@ -18,6 +25,10 @@ function onInit() {
   gElCanvas.addEventListener("touchstart", onDown, { passive: false })
   gElCanvas.addEventListener("touchmove", onMove, { passive: false })
   gElCanvas.addEventListener("touchend", onUp)
+
+  renderGallery()
+  renderKeywords()
+
   renderMeme()
 }
 
@@ -39,10 +50,13 @@ function onSetColor(ev) {
 
 function onBackToGallery() {
   document.querySelector(".gallery-layout").classList.remove("hidden")
+  document.querySelector(".filter-words").classList.remove("hidden")
+  document.querySelector(".keywords-container").classList.remove("hidden")
+
 
   document.querySelector(".editor-mems").classList.add("hidden")
   document.querySelector(".saved-memes").classList.add("hidden")
-  document.querySelector(".filter-words").classList.remove("hidden")
+
 
 }
 
@@ -222,14 +236,28 @@ function onRandomMeme() {
 }
 
 // TODO
-// function onKeywordClick(word){
-//   keywords[word]++
+function onKeywordClick(word) {
+  if (!keywords[word]) keywords[word] = 1
+  else keywords[word]++
 
-//   const filterImg = getImgs().filter(img.keywords.includes(word))
-//   renderGallery()
-//   if (!keywords[word]) keywords[word] = 1
-//   else keywords[word]++
-// }
+  onFilter(word)
+  renderKeywords() 
+}
+
+
+function renderKeywords() {
+  const elContainer = document.querySelector(".keywords-container")
+  let strHTMLs = ''
+
+  for (let word in keywords) {
+    const size = 16 + keywords[word] * 2 
+    strHTMLs += `<span 
+      style="font-size:${size}px; margin: 0 10px; cursor:pointer"
+      onclick="onKeywordClick('${word}')"
+    >${word}</span>`
+  }
+  elContainer.innerHTML = strHTMLs
+}
 
 function toggleMenu() {
   document.body.classList.toggle("menu-open")
@@ -237,4 +265,5 @@ function toggleMenu() {
   const hamburgerButton = document.querySelector(".menu")
   hamburgerButton.classList.toggle("open")
 }
+
 

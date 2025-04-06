@@ -105,15 +105,6 @@ function onImgInput(ev) {
     img.src = event.target.result
 
     img.onload = () => {
-      // gMeme.selectedImgId = -1
-      // gMeme.imgUrl = img.src
-      // drawImgOnCanvas(img)
-
-      // const newImg = {
-      //   id: gImgs.length + 1,
-      //   url: img.src,
-      //   keywords: ["uploaded"],
-      // }
 
       const newImg = {
         id: gImgs.length + gUploadedImgs.length + 1,
@@ -176,7 +167,7 @@ function onShareMeme() {
   }, "image/jpeg")
 }
 
-// TODO 
+// Delete saved meme 
 function onDeleteMeme(idx){
   const savedMemes = loadFromStorage('savedMemes')
   savedMemes.splice(idx, 1)
