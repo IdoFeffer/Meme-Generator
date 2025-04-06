@@ -1,6 +1,7 @@
+
 .editor-layout {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -16,14 +17,15 @@
 
 .edit-controls {
   background-color: #f0f0f0;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+  
   border: 1px solid red;
-  max-width: 300px;
+  max-width: 400px;
+  /* max-height: 450px; */
 }
 
 .fotter-edit {
@@ -32,6 +34,9 @@
   background-color: #aaa;
   padding: 10px;
   gap: 5px;
+
+  align-items: center;
+  justify-content: center;
 }
 
 .direction-edit {
@@ -58,3 +63,4 @@
 .color-picker{
   place-self: center;
 }
+

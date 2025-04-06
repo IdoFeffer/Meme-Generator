@@ -124,13 +124,17 @@
     height: auto;
     max-width: 400px;
     min-width: 250px;
-    min-height: 250px; /* ← הוסף שורה זו */
+    min-height: 250px; 
   }
   .btn {
     padding: 0.5rem;
   }
   .btn-navbar {
     padding: 1.5rem;
+  }
+
+  .edit-controls {
+    width: 350px;
   }
 }
 
