@@ -18,7 +18,7 @@ function onSaveMeme() {
   const memeCopy = JSON.parse(JSON.stringify(gMeme))
 
   // if (gMeme.selectedImgId === -1 && gMeme.imgUrl) {
-  //   gMeme.imgUrl = memeCopy.imgUrl 
+  //   gMeme.imgUrl = memeCopy.imgUrl
   // }
   if (gMeme.selectedImgId === -1) {
     memeCopy.selectedImgId = 19
@@ -48,30 +48,31 @@ function onShowSavedMeme() {
   const strHTMLs = savedMems.map((meme, idx) => {
     const imgUrl = meme.imgUrl || getImgById(meme.selectedImgId)
     if (!imgUrl) {
-      return ''
-    } 
+      return ""
+    }
     return `
       <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
       <button onclick="onDeleteMeme(${idx})">Delete meme</button>
     `
   })
-  
+
   elSaved.innerHTML = strHTMLs.join("")
   elSaved.classList.remove("hidden")
 
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.add("hidden")
+  document.querySelector(".btn-clear").classList.remove("hidden")
   // document.querySelector(".keywords-container").classList.add("hidden")
 }
 
 function onLoadSavedMeme(idx) {
   const savedMems = loadFromStorage("savedMemes") || []
   const memeToLoad = savedMems[idx]
-  if (!memeToLoad) return 
+  if (!memeToLoad) return
 
-  if (memeToLoad === -1) memeToLoad = 1 
+  if (memeToLoad === -1) memeToLoad = 1
 
-  gMeme = JSON.parse(JSON.stringify(memeToLoad)) 
+  gMeme = JSON.parse(JSON.stringify(memeToLoad))
   renderMeme()
 
   document.querySelector(".editor-mems").classList.remove("hidden")

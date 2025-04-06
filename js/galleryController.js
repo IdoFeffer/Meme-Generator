@@ -12,17 +12,27 @@ function renderGallery() {
   elGallery.innerHTML = strHTMLs.join("")
 
   document.querySelector(".filter-words").classList.remove("hidden")
+  document.querySelector(".filters").classList.remove("hidden")
+  document.querySelector(".surprise").classList.remove("hidden")
+
+
   document.querySelector(".keywords-container").classList.remove("hidden")
+  document.querySelector(".btn-clear").classList.remove("hidden")
+  document.querySelector(".surprise").classList.remove("hidden")  
 }
 
 function onImgSelect(imgId) {
   setImg(imgId)
   renderMeme()
-
+  
   document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".keywords-container").classList.add("hidden")
+  document.querySelector(".btn-clear").classList.add("hidden")
+  document.querySelector(".file-btn").classList.add("hidden")
+  document.querySelector(".surprise").classList.add("hidden")
+  document.querySelector(".btn-clear").classList.add("hidden")
+
   document.querySelector(".editor-mems").classList.remove("hidden")
-  // document.querySelector(".filter-words").classList.remove("hidden")
 }
 
 function onShowSavedMeme() {
@@ -46,6 +56,9 @@ function onShowSavedMeme() {
   document.querySelector(".editor-mems").classList.add("hidden")
   document.querySelector(".filter-words").classList.add("hidden")
   document.querySelector(".keywords-container").classList.add("hidden")
+  document.querySelector(".file-btn").classList.add("hidden")
+  document.querySelector(".btn-clear").classList.add("hidden")
+  document.querySelector(".surprise").classList.add("hidden")
 
 }
 
@@ -69,4 +82,5 @@ function onFilter(value) {
   })
   const elGallery = document.querySelector(".gallery-layout")
   elGallery.innerHTML = strHTMLs.join("")
+
 }

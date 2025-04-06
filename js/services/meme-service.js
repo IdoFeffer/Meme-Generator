@@ -55,8 +55,6 @@ const userService = {
   get,
 }
 
-
-
 function getMeme() {
   return gMeme
 }
@@ -113,7 +111,6 @@ function switchLine() {
   gMeme.selectedLineIdx = nextIdx
 }
 
-// TODO
 function renderSavedMemes() {
   const savedMems = loadFromStorage("savedMems") || []
   const elSaved = document.querySelector(".saved-memes")

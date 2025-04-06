@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 55px;
-  padding: 1em 2em;
+  padding: 1em 6em;
   justify-items: center;
 }
 
@@ -15,6 +15,7 @@
   aspect-ratio: 1;
   transition: transform 0.2s ease;
   cursor: pointer;
+
 }
 
 .gallery-layout img:hover {

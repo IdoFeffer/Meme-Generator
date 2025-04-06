@@ -1,7 +1,7 @@
 "use strict"
 var selectedImage = null
 var gCtx
-
+var gUploadedImgs = []
 
 function renderMeme() {
   const meme = getMeme()
@@ -34,7 +34,10 @@ function renderMeme() {
       }
     })
   }
-  document.querySelector(".filter-words").classList.add("hidden")
+  document.querySelector(".filter-words").classList.remove("hidden")
+  document.querySelector(".btn-clear").classList.add("hidden")
+  document.querySelector(".btn-clear").classList.remove("hidden")
+
 }
 
 // MEME TEXT EDIT
@@ -105,21 +108,25 @@ function onImgInput(ev) {
     img.src = event.target.result
 
     img.onload = () => {
-
       const newImg = {
         id: gImgs.length + gUploadedImgs.length + 1,
         url: img.src,
-        keywords: ['uploaded']
+        keywords: ["uploaded"],
       }
       gUploadedImgs.push(newImg)
       gMeme.selectedImgId = newImg.id
-
 
       gImgs.push(newImg)
       saveToStorage(gImgs)
       gMeme.selectedImgId = newImg.id
       // gMeme.imgUrl = img.src
       renderMeme()
+
+      document.querySelector(".gallery-layout").classList.add("hidden")
+      document.querySelector(".editor-mems").classList.remove("hidden")
+      document.querySelector(".filter-words").classList.add("hidden")
+      document.querySelector(".keywords-container").classList.add("hidden")
+      document.querySelector(".file-btn").classList.add("hidden")
     }
   }
   reader.readAsDataURL(ev.target.files[0])
@@ -149,7 +156,7 @@ function drawImgOnCanvas(img) {
   )
 }
 
-// Share meme 
+// Share meme
 function onShareMeme() {
   const canvas = document.getElementById("meme-canvas")
   canvas.toBlob((blob) => {
@@ -167,11 +174,17 @@ function onShareMeme() {
   }, "image/jpeg")
 }
 
-// Delete saved meme 
-function onDeleteMeme(idx){
-  const savedMemes = loadFromStorage('savedMemes')
+// Delete saved meme
+function onDeleteMeme(idx) {
+  const savedMemes = loadFromStorage("savedMemes")
   savedMemes.splice(idx, 1)
-  saveToStorage('savedMemes', savedMemes)
+  saveToStorage("savedMemes", savedMemes)
   onShowSavedMeme()
 }
 
+// Clear filter
+function onClearFilter() {
+  const elInput = document.querySelector(".filter-words")
+  elInput.value = ""
+  renderGallery()
+}

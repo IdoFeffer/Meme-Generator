@@ -37,21 +37,29 @@
     <div class="main-content">
       
       <h1>Meme Generator - sprint 2</h1>
-  
-      <div class="surprise">
-        <button class="btn btn-primary surprise" onclick="onRandomMeme()">
-          Surprise me!
-      </div>
       
-      <br />
-  
-      <!-- Filter memes  -->
-       <div class="filters">
-         <input type="filter" class="filter-words" oninput="onFilter(this.value)" placeholder="Search memes..." />
-         <div class="keywords-container"></div>
+      <div class="main-buttons">
+        <div class="surprise">
+          <button class="btn btn-primary surprise" onclick="onRandomMeme()">
+            Surprise me!
+            <!-- Upload file from device  -->
         </div>
+          <input
+          class="btn file-btn"
+          type="file"
+          accept="image/*"
+          id="imageInput"
+          onchange="onImgInput(event)"/>
+          
+          <!-- Filter memes  -->
+          <div class="filters">
+            <input type="filter" class="filter-words" oninput="onFilter(this.value)" placeholder="Search memes..." />
+            <button class="btn-clear" onclick="onClearFilter()">Clear</button>
+          </div>
 
-      <hr />
+          <div class="keywords-container"></div>
+        
+      </div>
   
       <!-- GALLERY -->
       <section class="gallery-layout"></section>
@@ -204,21 +212,13 @@
                 </button>
               </form>               -->
             </section>
-            
-            <!-- Upload file from device  -->
-            <!-- <input
-              class="btn"
-              type="file"
-              accept="image/*"
-              id="imageInput"
-              onchange="onImgInput(event)"
-            /> -->
           </div>
         </div>
       </section>
 
     </div>
 
+    <!-- Footer  -->
     <footer class="full main-footer flex space-between align-center">
       <h3 class="logo">Funny Memes</h3>
       <h4 class="footer-rights">By Ido Feffer</h4>

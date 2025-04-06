@@ -9,13 +9,16 @@ const keywords = {
   baby: 5,
   cat: 3,
   dog: 8,
+  obama: 1,
+  trump: 2,
+  putin: 1,
+  matrix: 1,
 }
 
 function onInit() {
   gElCanvas = document.getElementById("meme-canvas")
   gCtx = gElCanvas.getContext("2d")
 
-  renderGallery()
   gElCanvas.addEventListener("click", onCanvasClick)
 
   gElCanvas.addEventListener("mousedown", onDown)
@@ -24,11 +27,10 @@ function onInit() {
 
   gElCanvas.addEventListener("touchstart", onDown, { passive: false })
   gElCanvas.addEventListener("touchmove", onMove, { passive: false })
-  gElCanvas.addEventListener("touchend", onUp)
+  gElCanvas.addEventListener("touchend", onUp, { passive: false })
 
   renderGallery()
   renderKeywords()
-
   renderMeme()
 }
 
@@ -52,12 +54,12 @@ function onBackToGallery() {
   document.querySelector(".gallery-layout").classList.remove("hidden")
   document.querySelector(".filter-words").classList.remove("hidden")
   document.querySelector(".keywords-container").classList.remove("hidden")
+  document.querySelector(".file-btn").classList.remove("hidden")
+  document.querySelector(".btn-clear").classList.remove("hidden")
 
 
   document.querySelector(".editor-mems").classList.add("hidden")
   document.querySelector(".saved-memes").classList.add("hidden")
-
-
 }
 
 // Canvas clicks
@@ -235,15 +237,14 @@ function onRandomMeme() {
   renderMeme()
 }
 
-// TODO
 function onKeywordClick(word) {
   if (!keywords[word]) keywords[word] = 1
   else keywords[word]++
 
+  document.querySelector('.filter-words').value = word
   onFilter(word)
   renderKeywords() 
 }
-
 
 function renderKeywords() {
   const elContainer = document.querySelector(".keywords-container")

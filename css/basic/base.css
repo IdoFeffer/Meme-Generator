@@ -33,6 +33,7 @@ canvas {
 
 .hidden {
   display: none !important;
+  /* display: none ; */
 }
 
 html, body {
@@ -50,11 +51,17 @@ html, body {
 
 
 .filter-words {
-  display: flex;
+  display: block;
   place-self: center;
   padding: 0.5rem;
   border-radius: 10px;
   border: 1px solid #ccc;
-  /* max-width: 90%; */
 }
 
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
