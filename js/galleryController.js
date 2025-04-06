@@ -29,7 +29,10 @@ function onShowSavedMeme() {
   const strHTMLs = savedMems.map((meme, idx) => {
     const imgUrl = getImgById(meme.selectedImgId)
     return `
+    <div class="saved-meme-wrapper">
     <img src="${imgUrl}" onclick="onLoadSavedMeme(${idx})" />
+    <button onclick="onDeleteMeme(${idx})" class="btn-delete">🗑️</button>
+    </div>
     `
   })
   

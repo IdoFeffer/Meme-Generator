@@ -1,0 +1,30 @@
+.saved-meme-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.saved-meme-wrapper img {
+  width: 150px;
+  border-radius: 8px;
+  display: block;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: darkred;
+}

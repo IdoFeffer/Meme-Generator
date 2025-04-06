@@ -1,9 +1,9 @@
 
 .editor-layout {
   display: flex;
-  gap: 1rem;
   justify-content: center;
   align-items: flex-start;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .saved-memes img {
-  width: 100px;
+  width: 150px;
   border: 1px solid #aaa;
   border-radius: 8px;
   cursor: pointer;

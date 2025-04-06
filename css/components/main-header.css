@@ -42,7 +42,7 @@
 
 .main-nav ul {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .main-nav button {

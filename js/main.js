@@ -114,20 +114,21 @@ function getEvPos(ev) {
 
 function onDown(ev) {
   const pos = getEvPos(ev)
-  gElCanvas.style.cursor = "grabbing"
-
+  
   if (ev.type === "mousedown") ev.preventDefault()
+    
+    const lineIdx = getLineClickedIdx(pos)
+    if (lineIdx === -1) return
+    
+    gMeme.selectedLineIdx = lineIdx
+    gMeme.lines[lineIdx].isDrag = true
+    gLastPos = pos
 
-  const lineIdx = getLineClickedIdx(pos)
-  if (lineIdx === -1) return
-
-  gMeme.selectedLineIdx = lineIdx
-  gMeme.lines[lineIdx].isDrag = true
-  gLastPos = pos
-  gElCanvas.style.cursor = "grab"
+    gElCanvas.style.cursor = "grabbing"
 }
 
 function onMove(ev) {
+  // gElCanvas.style.cursor = "grabbing"
   const line = gMeme.lines[gMeme.selectedLineIdx]
   if (!line.isDrag) return
 
@@ -144,10 +145,11 @@ function onMove(ev) {
 
 function onUp() {
   gIsMouseDown = false
-
+  
   const line = gMeme.lines[gMeme.selectedLineIdx]
   if (line) line.isDrag = false
-  document.body.style.cursor = "grab"
+
+  gElCanvas.style.cursor = "grab"
 }
 
 function getLineClickedIdx(pos) {

@@ -178,7 +178,7 @@ function onShareMeme() {
 
 // TODO 
 function onDeleteMeme(idx){
-  const savedMemes = loadFromStorage('savedMemes') || []
+  const savedMemes = loadFromStorage('savedMemes')
   savedMemes.splice(idx, 1)
   saveToStorage('savedMemes', savedMemes)
   onShowSavedMeme()

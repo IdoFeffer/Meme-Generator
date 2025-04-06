@@ -1,60 +1,6 @@
 /* MOBILE ONLY  */
 
 @media (max-width: 640px) {
-  /* .main-layout {
-    grid-template-columns:
-      minmax(16px, 1fr) minmax(auto, 600px)
-      minmax(16px, 1fr);
-  }
-  .editor-layout {
-    flex-direction: column;
-    align-items: center;
-    padding-inline: 1em;
-  }
-
-  .edit-controls {
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-  }
-
-  .canvas-container {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .gallery-layout {
-    padding-inline: 1em;
-    gap: 12px;
-  }
-
-  .gallery-layout img {
-    max-width: 90px;
-  }
-
-  canvas {
-    max-width: 100%;
-    height: auto;
-  }
-  .menu {
-    display: block;
-  }
-
-  .main-nav {
-    display: flex;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100dvh;
-    background-color: #fff;
-    color: black;
-    border-inline-start: 1px solid #ccc;
-    min-width: 100px;
-    background-color: rgb(255 255 255 / 83%);
-    transform: translateX(100%);
-
-    transition: transform 0.6s;
-  } */
   .main-layout {
     grid-template-columns: minmax(auto, 600px);
   }
