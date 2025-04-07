@@ -5,16 +5,31 @@
     grid-template-columns: minmax(auto, 600px);
   }
 
+  .gallery-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1rem;
+    padding: 1rem;
+    justify-items: center;
+  }
+  
+
   body.menu-open .main-nav {
     transform: translateX(0);
     box-shadow: -8px 0px 40px rgb(28 207 192 / 50%);
   }
 
+  body.menu-open .main-screen {
+    display: block;
+  }
+
   .main-screen {
+    display: none;
     inset: 0;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    z-index: 9;
   }
 
   .menu {
