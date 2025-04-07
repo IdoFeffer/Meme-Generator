@@ -56,6 +56,7 @@ function onBackToGallery() {
   document.querySelector(".keywords-container").classList.remove("hidden")
   document.querySelector(".file-btn").classList.remove("hidden")
   document.querySelector(".btn-clear").classList.remove("hidden")
+  document.querySelector(".surprise").classList.remove("hidden")
 
 
   document.querySelector(".editor-mems").classList.add("hidden")

@@ -34,9 +34,18 @@ function renderMeme() {
       }
     })
   }
-  document.querySelector(".filter-words").classList.add("hidden")
-  document.querySelector(".btn-clear").classList.add("hidden")
+  // document.querySelector(".filter-words").classList.add("hidden")
   // document.querySelector(".btn-clear").classList.remove("hidden")
+  // document.querySelector(".btn-clear").classList.remove("hidden")
+
+  // document.querySelector(".gallery-layout").classList.remove("hidden")
+  // document.querySelector(".keywords-container").classList.remove("hidden")
+  // document.querySelector(".btn-clear").classList.remove("hidden")
+  // document.querySelector(".file-btn").classList.remove("hidden")
+  // document.querySelector(".surprise").classList.remove("hidden")
+  // document.querySelector(".btn-clear").classList.remove("hidden")
+
+
 
 }
 
