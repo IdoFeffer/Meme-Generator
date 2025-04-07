@@ -136,6 +136,8 @@ function onImgInput(ev) {
       document.querySelector(".filter-words").classList.add("hidden")
       document.querySelector(".keywords-container").classList.add("hidden")
       document.querySelector(".file-btn").classList.add("hidden")
+      document.querySelector(".surprise").classList.add("hidden")
+      document.querySelector(".btn-clear").classList.add("hidden")
     }
   }
   reader.readAsDataURL(ev.target.files[0])
