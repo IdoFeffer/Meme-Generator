@@ -233,8 +233,17 @@ function onRandomMeme() {
   ]
   gMeme.selectedLineIdx = 0
 
-  document.querySelector(".gallery-layout").classList.add("hidden")
   document.querySelector(".editor-mems").classList.remove("hidden")
+  
+  document.querySelector(".gallery-layout").classList.add("hidden")
+  document.querySelector(".gallery-layout").classList.add("hidden")
+  document.querySelector(".filter-words").classList.add("hidden")
+  document.querySelector(".keywords-container").classList.add("hidden")
+  document.querySelector(".file-btn").classList.add("hidden")
+  document.querySelector(".btn-clear").classList.add("hidden")
+  document.querySelector(".surprise").classList.add("hidden")
+
+
   renderMeme()
 }
 
