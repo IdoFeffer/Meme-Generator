@@ -216,6 +216,7 @@ function onMoveText(direction) {
   renderMeme()
 }
 
+// Surprise button 
 function onRandomMeme() {
   const imgs = getImgs()
   const randomImg = imgs[Math.floor(Math.random() * imgs.length)]
@@ -270,6 +271,7 @@ function renderKeywords() {
   elContainer.innerHTML = strHTMLs
 }
 
+// Menu for Mobile 
 function toggleMenu() {
   document.body.classList.toggle("menu-open")
 

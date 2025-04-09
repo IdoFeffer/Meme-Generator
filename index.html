@@ -57,10 +57,14 @@
             <input type="filter" class="filter-words" oninput="onFilter(this.value)" placeholder="Search memes..." />
             <button class="btn-clear" onclick="onClearFilter()">Clear</button>
           </div>
+          
+          <div class="keywords-wrapper">
+            <div class="keywords-container"></div>
 
-          <div class="keywords-container"></div>
+          </div>
+        </div>
+          
         
-      </div>
   
       <!-- GALLERY -->
       <section class="gallery-layout"></section>
@@ -109,10 +113,13 @@
             </div>
             
             <div class="tools-section2">
+              <label for="">
+                <!-- Color Picker-->
+                <i class="fa-solid fa-palette"></i>
+                <input type="color" id="text-color" class="color-picker" onchange="onSetColor(event)" />
+              </label>
+              
               <!-- Font Family  -->
-                             <!-- Color Picker-->
-              <input type="color" id="text-color" class="color-picker" onchange="onSetColor(event)" />
-
               <select
               name=""
               class="fontSelect"

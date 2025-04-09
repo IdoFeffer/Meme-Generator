@@ -199,3 +199,4 @@ function onClearFilter() {
   elInput.value = ""
   renderGallery()
 }
+
