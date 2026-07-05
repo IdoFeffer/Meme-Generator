@@ -2,7 +2,6 @@ button {
   touch-action: manipulation;
 }
 
-
 .btn {
   padding: 0.5em 1em;
   margin: 3px;
@@ -38,13 +37,40 @@ button {
 }
 
 .main-buttons {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.file-btn{
+.file-btn {
   margin-left: 1em;
 }
 
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  padding: 0 1.5em;
+  border-right: 1px solid #ddd;
+}
+
+.filter-group:last-child {
+  border-right: none;
+}
+
+.btn-clear {
+  margin-left: 10px;
+}
+
+.keywords-container {
+  border-bottom: 1px solid #ddd;
+}
