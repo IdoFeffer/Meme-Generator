@@ -72,5 +72,9 @@ button {
 }
 
 .keywords-container {
-  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  margin-right: 2em;
+}
+
+.keywords-warpper {
 }

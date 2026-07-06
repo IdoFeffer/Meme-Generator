@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="img/logo.png" />
 
     <!-- Font Awesome  -->
     <script
@@ -34,21 +34,17 @@
             <a class="btn btn-navbar btn-primary" onclick="onShowSavedMeme()"
               >Saved Mems</a
             >
-            <a class="about-me btn-navbar btn btn-primary" onclick="OnAboutMe()"
-              >About me</a
-            >
           </ul>
         </nav>
       </div>
     </header>
 
     <div class="main-content">
-      <h1>Meme Generator</h1>
+      <h1 style="font-family: HennyPenny">Meme Generator</h1>
 
       <div class="main-buttons">
         <!-- Filter memes -->
         <div class="filters">
-
           <div class="filter-group search-group">
             <input
               type="text"
@@ -76,9 +72,14 @@
           </div>
         </div>
 
-        <div class="keywords-wrapper">
+        <section class="keywords-wrapper flex-row">
           <div class="keywords-container"></div>
-        </div>
+          <div>
+            <button class="btn-clear btn-primary btn" onclick="onClearFilter()">
+              ALL
+            </button>
+          </div>
+        </section>
       </div>
 
       <!-- GALLERY -->
@@ -247,7 +248,7 @@
 
     <!-- Footer  -->
     <footer class="full main-footer flex space-between align-center">
-      <h3 class="logo">Funny Memes</h3>
+      <img src="img/logo.png" class="footer-logo" alt="Funny Memes" />
       <h4 class="footer-rights">By Ido Feffer</h4>
       <div>
         <ul class="footer-social social-links">
@@ -266,7 +267,6 @@
         </ul>
       </div>
     </footer>
-
     <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>

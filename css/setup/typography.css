@@ -4,3 +4,8 @@
     font-family: honk;
     src: url('/fonts/Honk-Regular.ttf');
   }
+
+  @font-face {
+    font-family: HennyPenny;
+    src: url('/fonts/HennyPenny-Regular.ttf');
+  }

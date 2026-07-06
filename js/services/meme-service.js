@@ -1,20 +1,20 @@
-"use strict"
+'use strict'
 
 var gMeme = {
   selectedImgId: 1,
   selectedLineIdx: 0,
   lines: [
     {
-      txt: "Top text",
+      txt: 'Top text',
       size: 20,
-      color: "white",
+      color: 'white',
       pos: { x: 250, y: 50 },
       isDrag: false,
     },
     {
-      txt: "Bottom text",
+      txt: 'Bottom text',
       size: 20,
-      color: "white",
+      color: 'white',
       pos: { x: 250, y: 250 },
       isDrag: false,
     },
@@ -22,32 +22,32 @@ var gMeme = {
 }
 
 var gImgs = [
-  { id: 1, url: "img/meme-imgs(square)/1.jpg", keywords: ["funny", "trump"] },
-  { id: 2, url: "img/meme-imgs(square)/2.jpg", keywords: ["baby", "dog"] },
-  { id: 3, url: "img/meme-imgs(square)/3.jpg", keywords: ["dog", "baby"] },
-  { id: 4, url: "img/meme-imgs(square)/4.jpg", keywords: ["cat", "cute"] },
-  { id: 5, url: "img/meme-imgs(square)/5.jpg", keywords: ["baby", "funny"] },
-  { id: 6, url: "img/meme-imgs(square)/6.jpg", keywords: ["surprised", "man"] },
+  { id: 1, url: 'img/meme-imgs(square)/1.jpg', keywords: ['funny', 'trump'] },
+  { id: 2, url: 'img/meme-imgs(square)/2.jpg', keywords: ['baby', 'dog'] },
+  { id: 3, url: 'img/meme-imgs(square)/3.jpg', keywords: ['dog', 'baby'] },
+  { id: 4, url: 'img/meme-imgs(square)/4.jpg', keywords: ['cat', 'cute'] },
+  { id: 5, url: 'img/meme-imgs(square)/5.jpg', keywords: ['baby', 'funny'] },
+  { id: 6, url: 'img/meme-imgs(square)/6.jpg', keywords: ['surprised', 'man'] },
   {
     id: 7,
-    url: "img/meme-imgs(square)/7.jpg",
-    keywords: ["baby", "surprised"],
+    url: 'img/meme-imgs(square)/7.jpg',
+    keywords: ['baby', 'surprised'],
   },
-  { id: 8, url: "img/meme-imgs(square)/8.jpg", keywords: ["surprised", "man"] },
-  { id: 9, url: "img/meme-imgs(square)/9.jpg", keywords: ["baby", "cool"] },
-  { id: 10, url: "img/meme-imgs(square)/10.jpg", keywords: ["obama", "funny"] },
-  { id: 11, url: "img/meme-imgs(square)/11.jpg", keywords: ["funny", "kiss"] },
-  { id: 12, url: "img/meme-imgs(square)/12.jpg", keywords: ["you", "point"] },
+  { id: 8, url: 'img/meme-imgs(square)/8.jpg', keywords: ['surprised', 'man'] },
+  { id: 9, url: 'img/meme-imgs(square)/9.jpg', keywords: ['baby', 'cool'] },
+  { id: 10, url: 'img/meme-imgs(square)/10.jpg', keywords: ['obama', 'funny'] },
+  { id: 11, url: 'img/meme-imgs(square)/11.jpg', keywords: ['funny', 'kiss'] },
+  { id: 12, url: 'img/meme-imgs(square)/12.jpg', keywords: ['you', 'point'] },
   {
     id: 13,
-    url: "img/meme-imgs(square)/13.jpg",
-    keywords: ["movie", "you"],
+    url: 'img/meme-imgs(square)/13.jpg',
+    keywords: ['movie', 'you'],
   },
-  { id: 14, url: "img/meme-imgs(square)/14.jpg", keywords: ["matrix", "cool"] },
-  { id: 15, url: "img/meme-imgs(square)/15.jpg", keywords: ["funny", "man"] },
-  { id: 16, url: "img/meme-imgs(square)/16.jpg", keywords: ["happy", "man"] },
-  { id: 17, url: "img/meme-imgs(square)/17.jpg", keywords: ["putin", "funny"] },
-  { id: 18, url: "img/meme-imgs(square)/18.jpg", keywords: ["toy", "buzz"] },
+  { id: 14, url: 'img/meme-imgs(square)/14.jpg', keywords: ['matrix', 'cool'] },
+  { id: 15, url: 'img/meme-imgs(square)/15.jpg', keywords: ['funny', 'man'] },
+  { id: 16, url: 'img/meme-imgs(square)/16.jpg', keywords: ['happy', 'man'] },
+  { id: 17, url: 'img/meme-imgs(square)/17.jpg', keywords: ['putin', 'funny'] },
+  { id: 18, url: 'img/meme-imgs(square)/18.jpg', keywords: ['toy', 'buzz'] },
 ]
 
 const userService = {
@@ -92,9 +92,9 @@ function changeFontSize(diff) {
 // ADD LINE
 function addLine() {
   const newLine = {
-    txt: "New line",
+    txt: 'New line',
     size: 20,
-    color: "white",
+    color: 'white',
     pos: { x: 250, y: 250 },
     isDrag: false,
   }
@@ -112,12 +112,12 @@ function switchLine() {
 }
 
 function renderSavedMemes() {
-  const savedMems = loadFromStorage("savedMems") || []
-  const elSaved = document.querySelector(".saved-memes")
+  const savedMems = loadFromStorage('savedMems') || []
+  const elSaved = document.querySelector('.saved-memes')
 
   const strHTMLs = savedMems.map((meme, idx) => {
     const imgUrl = meme.imgUrl || getImgById(meme.selectedImgId)
-    if (!imgUrl) return ""
+    if (!imgUrl) return ''
 
     return `
       <div class="saved-meme-preview">
@@ -127,12 +127,31 @@ function renderSavedMemes() {
     `
   })
 
-  elSaved.innerHTML = strHTMLs.join("")
+  elSaved.innerHTML = strHTMLs.join('')
 }
 
 function onDeleteMeme(idx) {
-  const savedMems = loadFromStorage("savedMems") || []
+  const savedMems = loadFromStorage('savedMems') || []
   savedMems.splice(idx, 1)
-  saveToStorage("savedMems", savedMems)
+  saveToStorage('savedMems', savedMems)
   renderSavedMemes()
+}
+
+function onShowAll() {
+  document.querySelector('.filter-words').value = ''
+  renderGallery()
+}
+
+function renderKeywords() {
+  const elContainer = document.querySelector('.keywords-container')
+  let strHTMLs = `<span class="keyword-all" onclick="onShowAll()">ALL</span>`
+
+  for (let word in keywords) {
+    const size = 16 + keywords[word] * 2
+    strHTMLs += `<span 
+      style="font-size:${size}px; margin: 0 10px; cursor:pointer"
+      onclick="onKeywordClick('${word}')"
+    >${word}</span>`
+  }
+  elContainer.innerHTML = strHTMLs
 }
