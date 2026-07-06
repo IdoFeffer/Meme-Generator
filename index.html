@@ -1,85 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sprint 2</title>
+    <title>Meme Generator</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/logo.png">
 
     <!-- Font Awesome  -->
     <script
       src="https://kit.fontawesome.com/731169d875.js"
       crossorigin="anonymous"
     ></script>
-
   </head>
 
   <body onload="onInit()" class="main-layout grid">
-    
     <div class="main-screen" onclick="toggleMenu()"></div>
 
     <header class="main-header flex space-between align-center full">
       <div class="main-nav-container flex space-between align-center">
-      
-        <a onclick="onBackToGallery()" style="cursor: pointer;" aria-label="Back to homepage">
-          <img src="img/logo.png" class="logo header" alt="" >
+        <a
+          onclick="onBackToGallery()"
+          style="cursor: pointer"
+          aria-label="Back to homepage"
+        >
+          <img src="img/logo.png" class="logo header" alt="" />
         </a>
         <nav class="main-nav">
           <ul class="flex clean-list">
-            <a class="btn btn-navbar btn-primary" onclick="onBackToGallery()">Gallery</a>
-            <a class="btn btn-navbar btn-primary" onclick="onShowSavedMeme()">Saved Mems</a>
-            <a class="about-me btn-navbar btn btn-primary" onclick="OnAboutMe()">About me</a>
+            <a class="btn btn-navbar btn-primary" onclick="onBackToGallery()"
+              >Gallery</a
+            >
+            <a class="btn btn-navbar btn-primary" onclick="onShowSavedMeme()"
+              >Saved Mems</a
+            >
+            <a class="about-me btn-navbar btn btn-primary" onclick="OnAboutMe()"
+              >About me</a
+            >
           </ul>
         </nav>
       </div>
-      <button class="menu btn-toggle-menu" type="button" onclick="toggleMenu()">&#9776</button>
     </header>
 
     <div class="main-content">
-      
       <h1>Meme Generator</h1>
-      
-        <div class="main-buttons">
 
-         <!-- Filter memes -->
-         <div class="filters">
+      <div class="main-buttons">
+        <!-- Filter memes -->
+        <div class="filters">
 
-           <div class="filter-group surprise-group">
-             <button class="btn btn-primary surprise" onclick="onRandomMeme()">
-                Surprise me!
-             </button>
-           </div>
-         
-            <div class="filter-group search-group">
-              <input type="text" class="filter-words" oninput="onFilter(this.value)" placeholder="Search memes..." />
-              <button class="btn-clear" onclick="onClearFilter()">Clear</button>
-           </div>
-         
-            <div class="filter-group upload-group">
-              <input
-                class="btn file-btn"
-                type="file"
-               accept="image/*"
-                id="imageInput"
-               onchange="onImgInput(event)"/>
-            </div>
-          
-         </div>
-       
-          <div class="keywords-wrapper">
-           <div class="keywords-container"></div>
-         </div>
+          <div class="filter-group search-group">
+            <input
+              type="text"
+              class="filter-words"
+              oninput="onFilter(this.value)"
+              placeholder="Search memes..."
+            />
+            <button class="btn-clear" onclick="onClearFilter()">Clear</button>
+          </div>
 
+          <div class="filter-group surprise-group">
+            <button class="btn btn-primary surprise" onclick="onRandomMeme()">
+              Surprise me!
+            </button>
+          </div>
+
+          <div class="filter-group upload-group">
+            <input
+              class="btn file-btn"
+              type="file"
+              accept="image/*"
+              id="imageInput"
+              onchange="onImgInput(event)"
+            />
+          </div>
         </div>
-          
-        
-  
+
+        <div class="keywords-wrapper">
+          <div class="keywords-container"></div>
+        </div>
+      </div>
+
       <!-- GALLERY -->
       <section class="gallery-layout"></section>
-  
+
       <!-- SAVED MEMES  -->
       <section class="saved-memes hidden"></section>
-  
+
       <!-- EDIT MEMS -->
       <section class="editor-mems hidden">
         <div class="editor-layout">
@@ -87,10 +94,9 @@
           <div class="canvas-container">
             <canvas id="meme-canvas" width="400" height="400"></canvas>
           </div>
-  
+
           <!-- Controls -->
           <div class="edit-controls">
-  
             <!-- Line controls -->
             <div class="line-contol">
               <!-- Text input -->
@@ -106,41 +112,39 @@
                   <a class="fa-solid fa-repeat"></a>
                 </button>
                 <button class="btn btn-primary" onclick="onAddLine()">
-                  
                   <a class="fa-solid fa-plus"></a>
                 </button>
-                <button
-                  class="btn btn-danger remove"
-                  onclick="onRemoveLine()"
-                >
+                <button class="btn btn-danger remove" onclick="onRemoveLine()">
                   <a class="fa-solid fa-trash"></a>
                 </button>
-              </div>   
-
+              </div>
             </div>
-            
+
             <div class="tools-section2">
-              <label for="">
-                <!-- Color Picker-->
+              <!-- Color Picker-->
+              <label>
                 <i class="fa-solid fa-palette"></i>
-                <input type="color" id="text-color" class="color-picker" onchange="onSetColor(event)" />
+                <input
+                  type="color"
+                  id="text-color"
+                  class="color-picker"
+                  onchange="onSetColor(event)"
+                />
               </label>
-              
+
               <!-- Font Family  -->
               <select
-              name=""
-              class="fontSelect"
-              id="font-select"
-              onchange="onSetFont(this.value)"
+                name=""
+                class="fontSelect"
+                id="font-select"
+                onchange="onSetFont(this.value)"
               >
-              <option value="Verdana">Verdana</option>
-              <option value="Arial">Arial</option>
-              <option value="Impact">Impact</option>
-            </select>
-            
-  
+                <option value="Verdana">Verdana</option>
+                <option value="Arial">Arial</option>
+                <option value="Impact">Impact</option>
+              </select>
             </div>
-  
+
             <div class="tools-section">
               <!-- Font Size  -->
               <div>
@@ -148,12 +152,15 @@
                   A+
                 </button>
 
-                <button class="btn btn-secondary" onclick="onChangeFontSize(-2)">
+                <button
+                  class="btn btn-secondary"
+                  onclick="onChangeFontSize(-2)"
+                >
                   A-
                 </button>
 
                 <!-- Direction Edit  -->
-                 <section class="direction-edit">
+                <section class="direction-edit">
                   <button>
                     <a
                       onclick="onMoveText('left')"
@@ -184,11 +191,10 @@
                       class="btn-primary fa-solid fa-arrow-down"
                     ></a>
                   </button> -->
-                </section> 
+                </section>
               </div>
-                          
             </div>
-            
+
             <!-- Smiles for edit  -->
             <ul class="smilies-edit">
               <li onclick="onAddSticker('😊')">😊</li>
@@ -199,7 +205,7 @@
               <li onclick="onAddSticker('😴')">😴</li>
               <li onclick="onAddSticker('🔥')">🔥</li>
             </ul>
-  
+
             <section class="fotter-edit">
               <!-- Download -->
               <a
@@ -207,16 +213,19 @@
                 class="btn-primary"
                 onclick="onDownloadCanvas(this)"
                 download
-                ><i class="btn btn-primary fa-solid fa-download"></i></a
-              >
+                ><i class="btn btn-primary fa-solid fa-download"></i
+              ></a>
               <button class="save-meme btn btn-primary" onclick="onSaveMeme()">
                 <i class="fa-solid fa-floppy-disk"></i>
               </button>
-              
-              <button class="btn btn-primary share-meme" onclick="onShareMeme()">
+
+              <button
+                class="btn btn-primary share-meme"
+                onclick="onShareMeme()"
+              >
                 <i class="fa-solid fa-share-nodes"></i>
-                </button>
-    
+              </button>
+
               <div class="share-container"></div>
               <!-- UPLOAD TO Cloudinary -->
               <!-- <form
@@ -231,11 +240,9 @@
                 </button>
               </form>               -->
             </section>
-            
           </div>
         </div>
       </section>
-
     </div>
 
     <!-- Footer  -->
@@ -245,10 +252,16 @@
       <div>
         <ul class="footer-social social-links">
           <li class="facebook">
-            <a href="https://www.facebook.com/IdoFeffer" class="fa-brands fa-facebook-f"></a>
-          </li>          
+            <a
+              href="https://www.facebook.com/IdoFeffer"
+              class="fa-brands fa-facebook-f"
+            ></a>
+          </li>
           <li class="github">
-            <a href="https://github.com/IdoFeffer" class="fa-brands fa-github"></a>
+            <a
+              href="https://github.com/IdoFeffer"
+              class="fa-brands fa-github"
+            ></a>
           </li>
         </ul>
       </div>
