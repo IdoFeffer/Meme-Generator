@@ -45,23 +45,23 @@
       <div class="main-buttons">
         <!-- Filter memes -->
         <div class="filters">
-          <div class="filter-group search-group">
+          <div class="filter-group search-group toolbar-item">
             <input
               type="text"
-              class="filter-words"
+              class="filter-words toolbar-item"
               oninput="onFilter(this.value)"
               placeholder="Search memes..."
             />
             <button class="btn-clear" onclick="onClearFilter()">Clear</button>
           </div>
 
-          <div class="filter-group surprise-group">
+          <div class="filter-group surprise-group toolbar-item">
             <button class="btn btn-primary surprise" onclick="onRandomMeme()">
               Surprise me!
             </button>
           </div>
 
-          <div class="filter-group upload-group">
+          <div class="filter-group upload-group toolbar-item">
             <input
               class="btn file-btn"
               type="file"
@@ -72,10 +72,13 @@
           </div>
         </div>
 
-        <section class="keywords-wrapper flex-row">
+        <section class="keywords-wrapper toolbar-item flex-row">
           <div class="keywords-container"></div>
           <div>
-            <button class="btn-clear btn-primary btn" onclick="onClearFilter()">
+            <button
+              class="btn-clear btn-primary btn btn-all"
+              onclick="onClearFilter()"
+            >
               ALL
             </button>
           </div>

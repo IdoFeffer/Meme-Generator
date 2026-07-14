@@ -6,7 +6,7 @@ body {
   background-color: whitesmoke;
   text-align: center;
   margin: 0 auto;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 canvas {
@@ -72,13 +72,16 @@ body {
 .keywords-wrapper {
   overflow-x: auto;
   white-space: nowrap;
-  /* padding: 1rem; */
   -webkit-overflow-scrolling: touch;
-  max-width: 100vw; 
+  max-width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .keywords-container {
-  display: inline-flex; 
+  display: inline-flex;
 }
 
 .keywords-container span {

@@ -66,15 +66,3 @@ button {
 .filter-group:last-child {
   border-right: none;
 }
-
-.btn-clear {
-  margin-left: 10px;
-}
-
-.keywords-container {
-  border-right: 1px solid #ddd;
-  margin-right: 2em;
-}
-
-.keywords-warpper {
-}
